@@ -14,7 +14,7 @@ var initSocket = function(socket){
 
 	socket.on('msg', function(data){
 		log('[user]: '+data);
-		socket.emit('msg', 'echo msg');
+		socket.emit('msg', 'echo msg: '+data);
 	});
 };
 
