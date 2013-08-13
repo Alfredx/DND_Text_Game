@@ -1,4 +1,6 @@
 
+var scripts = require('./drama_scripts/scripts.js');
+
 var log = function(content) {
 	var date = new Date();
 	date = date.toLocaleTimeString();
