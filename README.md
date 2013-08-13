@@ -1,4 +1,6 @@
 DND_Text_Game
 =============
 
-A game
+what is this? I don't know!
+Whaahhahahahahahahahahahahah
+This guy is out of his mind
