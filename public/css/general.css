@@ -1,5 +1,14 @@
 .frontStyle{
-	/*width: 400px;*/
 	margin-left: 0 auto;
 	text-align: center;
+}
+
+.rightAligned{
+	margin-right: 0px;
+	text-align: right;
+}
+
+.leftAligned{
+	margin-left: 0px;
+	text-align: left;
 }
