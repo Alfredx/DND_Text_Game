@@ -38,6 +38,10 @@ var onInputKeyPressed = function(event){
 	});
 
 	socket.on('msg', function(data) {
-		sendAsServer(data);
+		if(data.msg == 'clr'){
+			textArea.innerHTML = "";
+			return;
+		}
+		sendAsServer(data.pre+data.msg);
 	});
 })();

@@ -16,7 +16,10 @@ var initSocket = function(socket){
 
 	socket.on('msg', function(data){
 		log('[user]: '+data);
-		socket.emit('msg', 'echo msg: '+data);
+		socket.emit('msg', {
+			pre : 'echo msg: ',
+			msg : data
+		});
 	});
 };
 
@@ -33,6 +36,12 @@ exports.dev = function(req, res) {
 		title : "For Development"
 	};
 	res.render('dev_index',context);
+};
+exports.scripts = function(req, res) {
+	var context = {
+		title : "Scripts"
+	};
+	res.render('dev_scripts', context);
 };
 
 exports.initIO = function(io) {

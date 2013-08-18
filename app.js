@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'tmp')));
 
 app.get('/',handler.index);
 app.get('/dev', handler.dev);
+app.get('/dev/scripts', handler.scripts);
 app.post('/msg',handler.msgHandle);
 
 var server = http.createServer(app);
