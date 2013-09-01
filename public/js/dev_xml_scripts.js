@@ -1,4 +1,5 @@
-var nodeID = 0;
+var nodeID = 1;
+
 var onReady = function() {
 	var resetRenderMode = function(desiredMode) {
 		var newMode = jsPlumb.setRenderMode(desiredMode);
@@ -48,6 +49,7 @@ var onReady = function() {
 	};
 	var windows = $(".w");
 	jsPlumb.draggable(windows);
+	//复制并拖出
 	$(".module").draggable({
 		helper: "clone"
 	});
@@ -56,7 +58,8 @@ var onReady = function() {
 			if (ui.draggable[0].id == "clone"){
 				$(this).append('<div class="w"'+
 							   'id="node'+nodeID+'" '+
-							   '>新节点<div class="ep"></div></div>');
+							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+							   '>新节点'+nodeID+'<div class="ep"></div></div>');
 				jsPlumb.draggable($("#node"+nodeID));
 				jsPlumb.makeSource($("#node"+nodeID),sourceType);
 				jsPlumb.makeTarget($("#node"+nodeID), {
@@ -65,40 +68,33 @@ var onReady = function() {
 				});
 				var id = nodeID;
 				$(this).find("#node"+nodeID).bind("click", function(){
-					if(!$(this).find('#input')[0]){
-						jsPlumb.unmakeSource($("#node"+id));
-						jsPlumb.unmakeTarget($("#node"+id));
-						$(this).html('<input id="input" type="text"><div class="ep"></div>');
-						
+					if(!$(this).find('#textarea')[0]){
+						var origintext = $(this).html().substring(0,$(this).html().indexOf('<'));
+						$(this).html('<textarea id="textarea" style="z-index: 5; width:100%"></textarea><div class="ep"></div>');
+						var textarea = $(this).find('#textarea');
+						var parent = $(this);
+						textarea[0].onblur = function(){
+							var text = textarea[0].value;
+							parent.html(text+'<div class="ep"></div>');
+						};
+						textarea[0].value = origintext;
+						textarea[0].focus();
+						//移动光标到末尾
+					    var len = textarea[0].value.length;
+					    if (typeof textarea[0].selectionStart == 'number' && typeof textarea[0].selectionEnd == 'number') {
+					        textarea[0].selectionStart = textarea[0].selectionEnd = len;
+					    }
 					}
 				});
 				nodeID++;
 			}
 		}
 	});
-	// $("#plumbContainer").on("drop", function(event, ui){
-	// 		if (ui.draggable[0].className.indexOf("jq-draggable-outcontainer") > 0){
-	// 			var name = ui.draggable[0].name;
-	// 			alert(name);
-	// 			switch(name){
-	// 				case "clone":
-	// 					$(this).find("p").append('<div class="w ui-draggable ui-droppable _jsPlumb_endpoint_anchor_"'+
-	// 												'id="node'+nodeID+'" '+
-	// 												'>新节点<div class="ep"></div></div>')
-	// 					jsPlumb.makeSource(windows,sourceType);
-	// 			}
-	// 		}
-	// 	});
 	jsPlumb.bind("click",function(c) {
 		jsPlumb.detach(c);
 	});
-	jsPlumb.makeSource(windows, sourceType);
 	jsPlumb.bind("connection", function(info){
 		info.connection.getOverlay("label").setLabel("");
-	});
-	jsPlumb.makeTarget(windows, {
-		dropOptions : { hoverClass : "dragHover"},
-		anchor : "Continuous"
 	});
 
 };
