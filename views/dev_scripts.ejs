@@ -4,17 +4,28 @@
 	<title><%= title%></title>
 	<link href="../css/general.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" href="../css/demo-all.css">
-	<!-- <link rel="stylesheet" href="../css/demo.css"> -->
 	<link rel="stylesheet" href="../css/scripts_general.css">
 </head>
 
 <body>
 	<div>
 	    <div id="sidebar">
-	        新节点
-	        <div class="module" id="clone" name="clone">
+	        模板
+	        <div class="module" id="start_clone">
+	        	拖动创建新剧本入口
+	        	<div class="start ep"></div>
+	        </div>
+	        <div class="module" id="node_clone">
 	            拖动创建新节点
-	            <div class="ep"></div><br />
+	            <div class="ep node"></div>
+	        </div>
+	        <div class="module" id="branch_clone">
+	        	拖动创建新分支
+	        	<div class="ep branch"></div>
+	        </div>
+	        <div class="module" id="end_clone">
+	        	拖动创建新结束点
+	        	<div class="ep end"></div>
 	        </div>
 	    </div>
 		<div id="plumbContainer">

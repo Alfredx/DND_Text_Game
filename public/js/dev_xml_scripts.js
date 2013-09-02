@@ -47,15 +47,14 @@ var onReady = function() {
 			alert("Maximun connections (" + info.maxConnections + ") reached");
 		}
 	};
-	var windows = $(".w");
-	jsPlumb.draggable(windows);
 	//复制并拖出
 	$(".module").draggable({
 		helper: "clone"
 	});
 	$("#plumbContainer").droppable({
 		drop: function(event, ui){
-			if (ui.draggable[0].id == "clone"){
+			switch(ui.draggable[0].id){
+			case "node_clone":
 				$(this).append('<div class="w"'+
 							   'id="node'+nodeID+'" '+
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
@@ -87,7 +86,16 @@ var onReady = function() {
 					}
 				});
 				nodeID++;
+				break;
+			case "branch_clone":
+				break;
 			}
+		}
+	});
+	$("#sidebar").droppable({
+		drop: function(event, ui){
+			if(ui.draggable[0].id != "node_clone")
+				ui.draggable.remove();
 		}
 	});
 	jsPlumb.bind("click",function(c) {

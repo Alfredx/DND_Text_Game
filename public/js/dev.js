@@ -44,4 +44,5 @@ var onInputKeyPressed = function(event){
 		}
 		sendAsServer(data.pre+data.msg);
 	});
+
 })();

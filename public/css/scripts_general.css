@@ -19,20 +19,15 @@
 	width: 90%;
 	height: 100%;
 	z-index: -1;
-}
-#cc{
-	height: 100%;
-	width: 100%;
-	position: fixed;
-	background-color: white;
+	overflow: auto;
 }
 .module{
+	width: 80%;
 	text-align: center;
-	width:80%;
 	padding:1em;
 	position:relative;
 	border: 1px solid black;
-	z-index:4;
+	z-index:1;
 	border-radius:1em;
 	border:1px solid #2e6f9a;
 	box-shadow: 2px 2px 19px #e0e0e0;
@@ -46,16 +41,34 @@
 	cursor:move;
 	background-color:white;
 	font-size:11px;
+	font-style: tahoma;
 	color: black;
 
 	-webkit-transition:background-color 0.25s ease-in;
 	-moz-transition:background-color 0.25s ease-in;
 	transition:background-color 0.25s ease-in;	
 }
+.module:hover{
+	background-color: #5c96bc;
+	color:white;
+}
+.start{
+	background-color: green;
+}
+.node{
+	background-color: black;
+}
+.branch{
+	background-color: orange;
+}
+.end{
+	background-color: red;
+}
 .w { 
 	width:auto;
+	min-width: 5px;
 	padding:1em;
-	position:fixed;
+	position:absolute;
 	border: 1px solid black;
 	z-index:4;
 	border-radius:1em;
@@ -70,8 +83,9 @@
 	filter:alpha(opacity=80);
 	cursor:move;
 	background-color:white;
-	font-size:11px;
 	color: black;
+	font-size:11px;
+	font-style: Tahoma;
 	-webkit-transition:background-color 0.25s ease-in;
 	-moz-transition:background-color 0.25s ease-in;
 	transition:background-color 0.25s ease-in;	
@@ -85,7 +99,6 @@
 
 .ep {
 	float: right;
-	clear: left;
 	position:relative;
 	bottom: -1px;
 	right: -5px;

@@ -1,3 +1,15 @@
+var fs = require('fs');
+var xml2js = require('xml2js');
+
+
+fs.readFile(__dirname + '/drama_scripts/test_demo.xml', function(err, data){
+	var parser = new xml2js.Parser();
+	parser.parseString(data,function(err, result) {
+		//console.dir(result);
+		console.log(typeof(parser));
+	});
+});
+
 
 var scripts = require('./drama_scripts/scripts.js');
 
