@@ -40,7 +40,7 @@
 	filter:alpha(opacity=80);
 	cursor:move;
 	background-color:white;
-	font-size:11px;
+	font-size:12px;
 	font-style: tahoma;
 	color: black;
 
@@ -53,16 +53,16 @@
 	color:white;
 }
 .start{
-	background-color: green;
+	background-color: rgb(60,220,50);
 }
 .node{
-	background-color: black;
+	background-color: white;
 }
 .branch{
-	background-color: orange;
+	background-color: rgb(240,240,0);
 }
 .end{
-	background-color: red;
+	background-color: rgb(30,200,200);
 }
 .w { 
 	width:auto;
@@ -82,7 +82,7 @@
 	opacity:0.8;
 	filter:alpha(opacity=80);
 	cursor:move;
-	background-color:white;
+	/*background-color:white;*/
 	color: black;
 	font-size:11px;
 	font-style: Tahoma;
