@@ -33,6 +33,10 @@ var initSocket = function(socket){
 			msg : data
 		});
 	});
+
+	socket.on("onsave", function(data){
+		socket.emit("echosave",data);
+	});
 };
 
 exports.index = function(req, res) {

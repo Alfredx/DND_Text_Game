@@ -3,6 +3,39 @@ var nodeID = 1;
 var branchID = 1;
 var endID = 1;
 
+var socket = null;
+
+var scriptsTree = {};
+
+var Node = function(){
+	this.lines = "";
+	this.id = null;
+	this.type = "";
+	this.children = {};
+	this.parents = {};
+	this.addChild = function(child){
+		this.children[child.id] = child;
+	};
+	this.removeChildById = function(id){
+		delete this.children[id];
+	};
+	this.getChildById = function(id){
+		return this.children[id];
+	};
+	this.addParent = function(parent){
+		this.parents[parent.id] = parent;
+	};
+	this.removeParentById = function(id){
+		delete this.parents[id];
+	};
+	this.getParentById = function(id){
+		return this.parents[id];
+	};
+};
+
+var nodes = new Node();
+var connections = {};
+
 var sourceType = function() {
 	type = {
 		filter: ".ep",
@@ -36,7 +69,7 @@ var makeElement = function(jquery_element){
 	}
 };
 
-var bindClickEvent = function(element){
+var bindClickEvent = function(element, node){
 	element.bind("click", function(){
 		if(!$(this).find('#textarea')[0]){
 			var origintext = $(this).html().substring(0,$(this).html().indexOf('<'));
@@ -47,6 +80,7 @@ var bindClickEvent = function(element){
 				var text = textarea[0].value;
 				if(!text)
 					text = origintext;
+				node.lines = text;
 				parent.html(text+'<div class="ep"></div>');
 			};
 			textarea[0].value = origintext;
@@ -108,7 +142,13 @@ var onReady = function() {
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新剧本入口'+startID+'<div class="ep"></div></div>');
 				makeElement($("#start"+startID));
-				bindClickEvent($("#start"+startID));
+				var ep_start = new Node();
+				ep_start.id = "start"+startID;
+				ep_start.type = "start";
+				ep_start.lines = "新剧本入口"+startID;
+				scriptsTree["start"+startID] = ep_start;
+				nodes.addChild(ep_start);
+				bindClickEvent($("#start"+startID), ep_start);
 				startID++;
 				break;
 			case "node_clone":
@@ -117,7 +157,12 @@ var onReady = function() {
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新节点'+nodeID+'<div class="ep"></div></div>');
 				makeElement($("#node"+nodeID));
-				bindClickEvent($("#node"+nodeID));
+				var ep_node = new Node();
+				ep_node.id = "node"+nodeID;
+				ep_node.type = "node";
+				ep_node.lines = "新节点"+nodeID;
+				nodes.addChild(ep_node);
+				bindClickEvent($("#node"+nodeID), ep_node);
 				nodeID++;
 				break;
 			case "branch_clone":
@@ -126,7 +171,12 @@ var onReady = function() {
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新分支'+branchID+'<div class="ep"></div></div>');
 				makeElement($("#branch"+branchID));
-				bindClickEvent($("#branch"+branchID));
+				var ep_branch = new Node();
+				ep_branch.id = "branch"+branchID;
+				ep_branch.type = "branch";
+				ep_branch.lines = "新分支"+branchID;
+				nodes.addChild(ep_branch);
+				bindClickEvent($("#branch"+branchID), ep_branch);
 				branchID++;
 				break;
 			case "end_clone":
@@ -135,7 +185,12 @@ var onReady = function() {
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新结束点'+endID+'<div class="ep"></div></div>');
 				makeElement($("#end"+endID));
-				bindClickEvent($("#end"+endID));
+				var ep_end = new Node();
+				ep_end.id = "end"+endID;
+				ep_end.type = "end";
+				ep_end.lines = "新结束点"+endID;
+				nodes.addChild(ep_end);
+				bindClickEvent($("#end"+endID), ep_end);
 				endID++;
 				break;
 			}
@@ -143,28 +198,77 @@ var onReady = function() {
 	});
 	$("#sidebar").droppable({
 		drop: function(event, ui){
-			if(ui.draggable[0].id != "node_clone")
+			if(ui.draggable[0].id.indexOf("clone") < 0){
+				var node = nodes.getChildById(ui.draggable[0].id);
+				for(var uid in node.parents){
+					jsPlumb.detach(connections[node.parents[uid].id+node.id]);
+					delete connections[node.parents[uid].id+node.id];
+				}
+				for(var uid in node.children){
+					jsPlumb.detach(connections[node.id+node.children[uid].id]);
+					delete connections[node.id+node.children[uid].id];
+				}
+				nodes.removeChildById(node.id);
 				ui.draggable.remove();
+			}
 		}
 	});
 	jsPlumb.bind("click",function(c) {
 		jsPlumb.detach(c);
+		var source = nodes.getChildById(c.sourceId);
+		var target = nodes.getChildById(c.targetId);
+		source.removeChildById(c.targetId);
+		target.removeParentById(c.sourceId);
+		delete connections[c.sourceId+c.targetId];
 	});
 	jsPlumb.bind("connection", function(info){
 		var sts1 = info.connection.sourceId.indexOf("branch") >= 0;
 		var sts2 = info.connection.targetId.indexOf("branch") >= 0;
 		var statement = (sts1 || sts2) && !(sts1 && sts2);
-		if(statement)
+		if(statement){
 			info.connection.getOverlay("label").setLabel("");
-		else
+			var source = nodes.getChildById(info.connection.sourceId);
+			var target = nodes.getChildById(info.connection.targetId);
+			console.log(source);
+			source.addChild(target);
+			target.addParent(source);
+			connections[source.id+target.id] = jQuery.extend(true, {}, info.connection);
+			console.log(scriptsTree);
+		}
+		else{
 			jsPlumb.detach(info.connection);
+		}
 	});
 
 };
 
+var onSave = function(){
+	var data = {
+		nodes : {},
+		connections : {}
+	};
+	for(var uid in nodes.children){
+		data.nodes[uid] = {};
+		data.nodes[uid].id = nodes.children[uid].id;
+		data.nodes[uid].type = nodes.children[uid].type;
+		data.nodes[uid].lines = nodes.children[uid].lines;
+	}
+	for(var uid in connections){
+		data.connections[uid] = {};
+		data.connections[uid].sourceId = connections[uid].sourceId;
+		data.connections[uid].targetId = connections[uid].targetId;
+	}
+	socket.emit("onsave", data);
+};
+
 ;(function() {
+	socket = io.connect('/');
+
+	socket.on("echosave", function(data){
+		console.log(data);
+	});
+
 	jsPlumb.ready(onReady);
-
+	
+	$("#save").bind("click",onSave);
 })();
-
-//http://jsplumbtoolkit.com/statemachine/demo-jquery.js
