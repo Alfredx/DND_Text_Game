@@ -1,3 +1,4 @@
+
 var startID = 1;
 var nodeID = 1;
 var branchID = 1;
@@ -5,6 +6,7 @@ var endID = 1;
 
 var socket = null;
 
+var scriptsName = null;
 var scriptsTree = {};
 
 var Node = function(){
@@ -78,7 +80,7 @@ var bindClickEvent = function(element, node){
 			var parent = $(this);
 			textarea[0].onblur = function(){
 				var text = textarea[0].value;
-				if(!text)
+				if(!text || antiJSInjection(text))
 					text = origintext;
 				node.lines = text;
 				parent.html(text+'<div class="ep"></div>');
@@ -138,59 +140,59 @@ var onReady = function() {
 			switch(ui.draggable[0].id){
 			case "start_clone":
 				$(this).append('<div class="start w"'+
-							   'id="start'+startID+'" '+
+							   'id="start-'+startID+'" '+
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新剧本入口'+startID+'<div class="ep"></div></div>');
-				makeElement($("#start"+startID));
+				makeElement($("#start-"+startID));
 				var ep_start = new Node();
-				ep_start.id = "start"+startID;
+				ep_start.id = "start-"+startID;
 				ep_start.type = "start";
 				ep_start.lines = "新剧本入口"+startID;
-				scriptsTree["start"+startID] = ep_start;
+				scriptsTree["start-"+startID] = ep_start;
 				nodes.addChild(ep_start);
-				bindClickEvent($("#start"+startID), ep_start);
+				bindClickEvent($("#start-"+startID), ep_start);
 				startID++;
 				break;
 			case "node_clone":
 				$(this).append('<div class="node w"'+
-							   'id="node'+nodeID+'" '+
+							   'id="node-'+nodeID+'" '+
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新节点'+nodeID+'<div class="ep"></div></div>');
-				makeElement($("#node"+nodeID));
+				makeElement($("#node-"+nodeID));
 				var ep_node = new Node();
-				ep_node.id = "node"+nodeID;
+				ep_node.id = "node-"+nodeID;
 				ep_node.type = "node";
 				ep_node.lines = "新节点"+nodeID;
 				nodes.addChild(ep_node);
-				bindClickEvent($("#node"+nodeID), ep_node);
+				bindClickEvent($("#node-"+nodeID), ep_node);
 				nodeID++;
 				break;
 			case "branch_clone":
 				$(this).append('<div class="branch w"'+
-							   'id="branch'+branchID+'" '+
+							   'id="branch-'+branchID+'" '+
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新分支'+branchID+'<div class="ep"></div></div>');
-				makeElement($("#branch"+branchID));
+				makeElement($("#branch-"+branchID));
 				var ep_branch = new Node();
-				ep_branch.id = "branch"+branchID;
+				ep_branch.id = "branch-"+branchID;
 				ep_branch.type = "branch";
 				ep_branch.lines = "新分支"+branchID;
 				nodes.addChild(ep_branch);
-				bindClickEvent($("#branch"+branchID), ep_branch);
+				bindClickEvent($("#branch-"+branchID), ep_branch);
 				branchID++;
 				break;
 			case "end_clone":
 				$(this).append('<div class="end w"'+
-							   'id="end'+endID+'" '+
+							   'id="end-'+endID+'" '+
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
 							   '>新结束点'+endID+'<div class="ep"></div></div>');
-				makeElement($("#end"+endID));
+				makeElement($("#end-"+endID));
 				var ep_end = new Node();
-				ep_end.id = "end"+endID;
+				ep_end.id = "end-"+endID;
 				ep_end.type = "end";
 				ep_end.lines = "新结束点"+endID;
 				nodes.addChild(ep_end);
-				bindClickEvent($("#end"+endID), ep_end);
+				bindClickEvent($("#end-"+endID), ep_end);
 				endID++;
 				break;
 			}
@@ -231,7 +233,7 @@ var onReady = function() {
 			var target = nodes.getChildById(info.connection.targetId);
 			source.addChild(target);
 			target.addParent(source);
-			connections[source.id+target.id] = jQuery.extend(true, {}, info.connection);
+			connections[source.id+target.id] = info.connection;
 		}
 		else{
 			jsPlumb.detach(info.connection);
@@ -241,6 +243,14 @@ var onReady = function() {
 };
 
 var onSave = function(){
+	if(scriptsName === null){
+		//alert("请给你的剧本一个名字");
+		$("#name").css("color", "red");
+		setTimeout(function(){
+			$("#name").css("color", "inherit");
+		},2000);
+		return;
+	}
 	var data = {
 		nodes : {},
 		connections : {}
@@ -256,7 +266,53 @@ var onSave = function(){
 		data.connections[uid].sourceId = connections[uid].sourceId;
 		data.connections[uid].targetId = connections[uid].targetId;
 	}
+	data.name = scriptsName;
 	socket.emit("onsave", data);
+	var time = (new Date()).toLocaleTimeString();
+	$("#time").html("上次保存于："+time);
+};
+
+var onChangeName = function(){
+	var name = $("#name");
+	var oldtext = name.html();
+	oldtext = oldtext.substring(0,oldtext.indexOf('<a id="changeName">修改</a>'));
+	name.html('<input type="text" id="nameInput">');
+	$("#nameInput").keypress(function(event){
+		if(window.event) // IE
+			keynum = event.keyCode
+		else if(event.which) // Netscape/Firefox/Opera
+			keynum = event.which
+		if(keynum == 13){
+			value = $(this)[0].value;
+			if(value){
+				if(antiJSInjection(value)){
+					value = oldtext;
+					alert("Warning! DO NOT try to do something bad!");
+				}
+				scriptsName = value;
+				name.html(value+'<a id="changeName">修改</a>');
+			}
+			else
+				name.html(oldtext+'<a id="changeName">修改</a>');
+			$("#changeName").click(onChangeName);
+		}
+	});
+	$("#nameInput").blur(function(){
+		value = $(this)[0].value;
+		if(value){
+			if(antiJSInjection(value)){
+				value = oldtext;
+				alert("Warning! DO NOT try to do something bad!");
+			}
+			scriptsName = value;
+			name.html(value+'<a id="changeName">修改</a>');
+		}
+		else
+			name.html(oldtext+'<a id="changeName">修改</a>');
+		$("#changeName").click(onChangeName);
+	});
+	$("#nameInput")[0].value = oldtext;
+	$("#nameInput").focus();
 };
 
 ;(function() {
@@ -266,7 +322,13 @@ var onSave = function(){
 		console.log(data);
 	});
 
+	socket.on('error', function(err){
+		alert(err);
+	})
+
 	jsPlumb.ready(onReady);
-	
-	$("#save").bind("click",onSave);
+	var time = (new Date()).toLocaleTimeString();
+	$("#time").html("创建于："+time);
+	$("#changeName").click(onChangeName);
+	$("#save").click(onSave);
 })();

@@ -3,14 +3,18 @@
 <head>
 	<title><%= title%></title>
 	<link href="../css/general.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" href="../css/demo-all.css">
+	<!-- <link rel="stylesheet" href="../css/demo-all.css"> -->
 	<link rel="stylesheet" href="../css/scripts_general.css">
 </head>
 
 <body>
 	<div>
 	    <div id="sidebar">
-	        <div style="text-align: center; height:5%; width:auto;">模板</div>
+	    	<div id="nameTag">
+	    		<div id="name">新剧本<a id="changeName">修改</a></div>
+	    		<div id="reminder" hidden>请给您的剧本一个名字</div>
+	    		<div id="time">上次保存于：</div>
+	    	</div>
 	        <div class="module start" id="start_clone">
 	        	拖动创建新剧本入口
 	        	<div class="ep"></div>
@@ -28,12 +32,11 @@
 	        	<div class="ep"></div>
 	        </div>
 	        <div>
-	        	<button id="save" style="width:100%; position:relative; top:50px;">save</button>
+	        	<button id="save" style="width:100%; position:relative; top:50px;">保存剧本</button>
 	        </div>
 	    </div>
 		<div id="plumbContainer">
-			<!-- <div class="w" id="1"><input type="text" width="100%">1234<div class="ep"></div></div>
-			<div class="w" id="2">another<div class="ep"></div></div> -->
+			
 		</div>
 	</div>
 	<script type="text/javascript" src="../js/lib/socket.io.min.js"></script>
@@ -41,6 +44,7 @@
 	<script type="text/javascript" src="../js/lib/jquery-ui-1.9.2-min.js"></script>
 	<script type="text/javascript" src="../js/lib/jquery.jsPlumb-1.5.0-min.js "></script>
 	<script type="text/javascript" src="../js/lib/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="../js/security.js"></script>
 	<script type="text/javascript" src="../js/dev_xml_scripts.js"></script>
 </body>
 

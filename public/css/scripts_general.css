@@ -1,3 +1,21 @@
+/** OPEN SANS FONT **/
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+ 	src:local('Open Sans'), 
+ 		local('OpenSans'),
+ 		url("OpenSans-Regular.ttf") format('truetype'),
+ 		url("OpenSans.woff") format('woff'); 		
+}
+
+body {
+    padding:0;
+    margin:0;
+    background-color:white;    
+    font-family:'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;    
+    background-color:#eaedef;
+}
 
 #sidebar{
 	background-color: black;
@@ -9,7 +27,45 @@
 	left: 0;
 	color: white;
 	text-align: center;
+	vertical-align: middle;
+	font-size: 12px;
 	z-index: 0;
+}
+#nameTag{
+	font-size: inherit;
+	height: 10%;
+	text-align: center;
+}
+#name{
+	height: 5%;
+	top: 10%;
+	position: relative;
+}
+#reminder{
+	height: 5%;
+	top: 50%;
+	color: red;
+	position: relative;
+}
+#time{
+	height: 5%;
+	top: 50%;
+	position: relative;
+}
+#name a, a:visited {
+	right: 2px;
+	float: right;
+    text-decoration:underline;
+    color:#5c96bc;        
+    border-radius:0.2em;
+    -webkit-transition: color 0.15s ease-in;
+    -moz-transition: color 0.15s ease-in;
+    -o-transition: color 0.15s ease-in;
+    transition: color 0.15s ease-in;
+}
+
+#name a:hover {
+    color:#1b911b;
 }
 
 #plumbContainer{
@@ -84,7 +140,7 @@
 	cursor:move;
 	/*background-color:white;*/
 	color: black;
-	font-size:11px;
+	font-size:12px;
 	font-style: Tahoma;
 	-webkit-transition:background-color 0.25s ease-in;
 	-moz-transition:background-color 0.25s ease-in;
@@ -121,6 +177,15 @@
 ._jsPlumb_endpoint {
 	z-index:3;
 }
+._jsPlumb_drag_select * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none
+}
+
 
 .aLabel {
 	-webkit-transition:background-color 0.25s ease-in;
