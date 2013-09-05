@@ -23,6 +23,7 @@ node_modules/
 
 # for files saving directory
 tmp/
+drama_scripts/
 
 #for emacs' temp file
 *.*~

@@ -229,11 +229,9 @@ var onReady = function() {
 			info.connection.getOverlay("label").setLabel("");
 			var source = nodes.getChildById(info.connection.sourceId);
 			var target = nodes.getChildById(info.connection.targetId);
-			console.log(source);
 			source.addChild(target);
 			target.addParent(source);
 			connections[source.id+target.id] = jQuery.extend(true, {}, info.connection);
-			console.log(scriptsTree);
 		}
 		else{
 			jsPlumb.detach(info.connection);
@@ -262,7 +260,7 @@ var onSave = function(){
 };
 
 ;(function() {
-	socket = io.connect('/');
+	socket = io.connect('/scripts');
 
 	socket.on("echosave", function(data){
 		console.log(data);
