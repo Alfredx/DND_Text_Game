@@ -33,7 +33,7 @@ var regroupData = function(data){
 	return root;
 };
 
-var checkValidation = function(data){
+var isValid = function(data){
 	var isEmpty = function(obj){
 		for(var name in obj){
 			return false;
@@ -48,7 +48,7 @@ var checkValidation = function(data){
 };
 
 var onSave = function(data, socket){
-	var root = regroupData(checkValidation(data));
+	var root = regroupData(isValid(data));
 	if(root){
 		scriptsRoots[root.name] = root;
 	}
