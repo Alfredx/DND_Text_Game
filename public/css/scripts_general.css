@@ -80,7 +80,6 @@ body {
 .module{
 	width: 80%;
 	min-width: 80%;
-	max-width: 80%;
 	text-align: center;
 	padding:1em;
 	position:relative;
@@ -98,7 +97,7 @@ body {
 	filter:alpha(opacity=80);
 	cursor:move;
 	background-color:white;
-	font-size:12px;
+	font-size: auto;
 	font-style: tahoma;
 	color: black;
 
