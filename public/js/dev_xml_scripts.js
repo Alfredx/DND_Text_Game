@@ -268,8 +268,6 @@ var onSave = function(){
 	}
 	data.name = scriptsName;
 	socket.emit("onsave", data);
-	var time = (new Date()).toLocaleTimeString();
-	$("#time").html("上次保存于："+time);
 };
 
 var onChangeName = function(){
@@ -320,6 +318,8 @@ var onChangeName = function(){
 
 	socket.on("echosave", function(data){
 		console.log(data);
+		var time = (new Date()).toLocaleTimeString();
+		$("#time").html("上次保存于："+time);
 	});
 
 	socket.on('error', function(err){

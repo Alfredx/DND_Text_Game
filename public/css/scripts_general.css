@@ -79,6 +79,8 @@ body {
 }
 .module{
 	width: 80%;
+	min-width: 80%;
+	max-width: 80%;
 	text-align: center;
 	padding:1em;
 	position:relative;
@@ -110,15 +112,19 @@ body {
 }
 .start{
 	background-color: rgb(60,220,50);
+	max-width: 40%;
 }
 .node{
 	background-color: white;
+	max-width: 30%;
 }
 .branch{
 	background-color: rgb(240,240,0);
+	max-width: 16%;
 }
 .end{
 	background-color: rgb(30,200,200);
+	max-width: 80%;
 }
 .w { 
 	width:auto;
