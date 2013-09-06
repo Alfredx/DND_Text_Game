@@ -45,7 +45,7 @@ exports.scripts = function(req, res) {
 };
 
 exports.initIO = function(io) {
-	io.sockets.on('connection', function(socket) {
+	io.of('/dev').on('connection', function(socket) {
         initSocket(socket);
     });
 };

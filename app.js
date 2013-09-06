@@ -1,8 +1,8 @@
 
 // import modules
 var express = require('express');
-var handler = require('./routes/handler');
-var scriptsHandler = require('./routes/scripts_handler');
+var handler = require(__dirname+'/routes/handler');
+var scriptsHandler = require(__dirname+'/routes/scripts_handler');
 var http = require('http');
 var path = require('path');
 var sio = require('socket.io');
@@ -19,7 +19,8 @@ app.use(express.methodOverride());
 
 //app.use(express.session());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public'/*, {maxAge: 604800000}*/)));
+//use md5 check to clear cache? how?
 
 app.get('/',handler.index);
 app.get('/dev', handler.dev);

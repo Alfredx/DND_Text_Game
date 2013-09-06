@@ -30,7 +30,7 @@ var onInputKeyPressed = function(event){
 (function(){
 	input.onkeypress = onInputKeyPressed;
 
-	socket = io.connect('/');
+	socket = io.connect('/dev');
 
 	socket.on('hello', function(data) {
 		sendAsServer(data);
