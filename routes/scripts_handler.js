@@ -1,9 +1,9 @@
 var fs = require('fs');
 var xml2js = require('xml2js');
+var loader = require(__dirname + '/scripts_loader.js');
 
 var xmlpath = 'drama_scripts/';
-
-var scriptsRoots = {};
+var scriptsRoots = loader.getRoots();
 
 var scriptsNode = function(lines, type){
 	this.lines = lines;
@@ -101,3 +101,10 @@ exports.initIO = function(io){
 		initSocket(socket);
 	});
 }
+
+exports.render = function(req, res) {
+	var context = {
+		title : "Scripts"
+	};
+	res.render('dev_scripts', context);
+};

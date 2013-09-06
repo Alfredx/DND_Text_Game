@@ -23,8 +23,8 @@ app.use('/public', express.static(path.join(__dirname, 'public'/*, {maxAge: 6048
 //use md5 check to clear cache? how?
 
 app.get('/', handler.index);
-app.get('/dev', handler.dev);
-app.get('/dev/scripts', handler.scripts);
+app.get('/dev', handler.render);
+app.get('/dev/scripts', scriptsHandler.render);
 app.post('/msg',handler.msgHandle);
 
 var server = http.createServer(app);

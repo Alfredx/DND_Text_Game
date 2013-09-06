@@ -1,5 +1,8 @@
 var fs = require('fs');
 var xml2js = require('xml2js');
+var loader = require(__dirname + '/scripts_loader.js');
+
+var scriptsRoots = loader.getRoots();
 
 var log = function(content) {
 	var date = new Date();
@@ -18,7 +21,7 @@ var initSocket = function(socket){
 		log('[user]: '+data);
 		socket.emit('msg', {
 			pre : 'echo msg: ',
-			msg : data
+			msg : data, 
 		});
 	});
 };
@@ -31,17 +34,11 @@ exports.index = function(req, res) {
 };
 
 //for development use
-exports.dev = function(req, res) {
+exports.render = function(req, res) {
 	var context = {
 		title : "For Development"
 	};
 	res.render('dev_index',context);
-};
-exports.scripts = function(req, res) {
-	var context = {
-		title : "Scripts"
-	};
-	res.render('dev_scripts', context);
 };
 
 exports.initIO = function(io) {
