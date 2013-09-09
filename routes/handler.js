@@ -13,6 +13,14 @@ var log = function(content) {
 //used in dev
 var initSocket = function(socket){
 	socket.emit('hello', 'hello this is server! let\'s play!');
+	var currentScripts = null;
+	for(var name in scriptsRoots){
+		currentScripts = scriptsRoots[name];
+	}
+	socket.emit('msg', {
+		pre: '['+[currentScripts.name]+']',
+		msg: currentScripts.entry[0].lines
+	});
 	socket.on('echo', function(data){
 		log('socket now is set up');
 	});

@@ -37,7 +37,6 @@ var readXML = function(dir){
 				}
 			}
 			roots[root.name] = root;
-			console.log(root);
 		});
 	});
 };
