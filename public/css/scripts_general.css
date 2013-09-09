@@ -38,7 +38,15 @@ body {
 #name{
 	height: 5%;
 	top: 10%;
+	font-size: 20px;
 	position: relative;
+}
+#name a{
+	top: 100%;
+	font-size: 12px;
+}
+#nameInput{
+	width: 90%;
 }
 #reminder{
 	height: 5%;

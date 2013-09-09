@@ -1,15 +1,13 @@
 var fs = require('fs');
+var crypto = require('crypto');
 var xml2js = require('xml2js');
 var loader = require(__dirname + '/scripts_loader.js');
+var utils = require(__dirname + '/utils.js');
 
-var xmlpath = 'drama_scripts/';
+var xmldirpath = 'drama_scripts/';
 var scriptsRoots = loader.getRoots();
 
-var scriptsNode = function(lines, type){
-	this.lines = lines;
-	this.type = type;
-	this.selections = new Array();
-};
+var scriptsNode = utils.scriptsNode;
 
 var regroupData = function(data){
 	if(!data)
@@ -41,25 +39,29 @@ var isValid = function(data){
 		return true;
 	};
 	//TODO
-	if(isEmpty(data.nodes) || isEmpty(data.connections))
+	if(isEmpty(data.nodes) || isEmpty(data.connections) || !data.name)
 		return false;
 	else
 		return data;
 };
 
+var md5encrypt = function(name){
+	var hasher = crypto.createHash('md5');
+	hasher.update(name);
+	return hasher.digest('hex');
+};
+
 var onSave = function(data, socket){
 	var root = regroupData(isValid(data));
-	if(root){
-		scriptsRoots[root.name] = root;
-	}
-	else{
+	var md5 = null;
+	if(!root){
 		socket.emit('error', 'Invalid scripts');
 		return;
 	}
-	if(!data.name)
-		data.name = 'temp';
-	var xml = '<?xml version="1.0"?>\n';
-	xml += '<'+data.name+'>\n';
+	else{
+		md5 = md5encrypt(root.name);
+	}
+	var xml = '<'+data.name+'>\n';
 	for(var uid in data.nodes){
 		xml += '\t<node>\n';
 		xml += '\t\t<id>'+data.nodes[uid].id+'</id>\n';
@@ -74,12 +76,12 @@ var onSave = function(data, socket){
 		xml += '\t</connection>\n';
 	}
 	xml += ('</'+data.name+'>\n');
-	fs.writeFile(xmlpath+data.name+'.xml', xml, function(err){
+	fs.writeFile(xmldirpath+md5, xml, function(err){
 		if(err){
 			socket.emit('error', 'error happen when saving file:\n'+err.toString());
 			throw err;
 		}
-		fs.readFile(xmlpath+data.name+'.xml', function(err, data){
+		fs.readFile(xmldirpath+md5, function(err, data){
 			var parser = new xml2js.Parser();
 			parser.parseString(data,function(err, result) {
 				console.dir(result);
@@ -87,7 +89,6 @@ var onSave = function(data, socket){
 			});
 		});
 	});
-
 };
 
 var initSocket = function(socket){

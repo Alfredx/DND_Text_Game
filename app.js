@@ -1,8 +1,9 @@
 
 // import modules
 var express = require('express');
-var handler = require(__dirname+'/routes/handler');
-var scriptsHandler = require(__dirname+'/routes/scripts_handler');
+var handler = require(__dirname+'/routes/handler.js');
+var scriptsHandler = require(__dirname+'/routes/scripts_handler.js');
+var scriptsLoader = require(__dirname+'/routes/scripts_loader.js');
 var http = require('http');
 var path = require('path');
 var sio = require('socket.io');
@@ -29,6 +30,8 @@ app.post('/msg',handler.msgHandle);
 
 var server = http.createServer(app);
 var io = sio.listen(server, {log: true});
+
+scriptsLoader.onload();
 
 handler.initIO(io);//only for web user
 scriptsHandler.initIO(io);	//io.of('/scripts')

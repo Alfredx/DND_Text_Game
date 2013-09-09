@@ -142,12 +142,12 @@ var onReady = function() {
 				$(this).append('<div class="start w"'+
 							   'id="start-'+startID+'" '+
 							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
-							   '>新剧本入口'+startID+'<div class="ep"></div></div>');
+							   '>新入口'+startID+'<div class="ep"></div></div>');
 				makeElement($("#start-"+startID));
 				var ep_start = new Node();
 				ep_start.id = "start-"+startID;
 				ep_start.type = "start";
-				ep_start.lines = "新剧本入口"+startID;
+				ep_start.lines = "新入口"+startID;
 				scriptsTree["start-"+startID] = ep_start;
 				nodes.addChild(ep_start);
 				bindClickEvent($("#start-"+startID), ep_start);
