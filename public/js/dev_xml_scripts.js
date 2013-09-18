@@ -1,4 +1,4 @@
-
+﻿
 var startID = 1;
 var nodeID = 1;
 var branchID = 1;
@@ -260,6 +260,8 @@ var onSave = function(){
 		data.nodes[uid].id = nodes.children[uid].id;
 		data.nodes[uid].type = nodes.children[uid].type;
 		data.nodes[uid].lines = nodes.children[uid].lines;
+		data.nodes[uid].top = $("#"+data.nodes[uid].id)[0].top;
+		data.nodes[uid].left = $("#"+data.nodes[uid].id)[0].left;		
 	}
 	for(var uid in connections){
 		data.connections[uid] = {};
@@ -276,6 +278,7 @@ var onChangeName = function(){
 	oldtext = oldtext.substring(0,oldtext.indexOf('<a id="changeName">修改</a>'));
 	name.html('<input type="text" id="nameInput">');
 	$("#nameInput").keypress(function(event){
+		var keynum = null;
 		if(window.event) // IE
 			keynum = event.keyCode
 		else if(event.which) // Netscape/Firefox/Opera

@@ -67,6 +67,8 @@ var onSave = function(data, socket){
 		xml += '\t\t<id>'+data.nodes[uid].id+'</id>\n';
 		xml += '\t\t<type>'+data.nodes[uid].type+'</type>\n';
 		xml += '\t\t<lines>'+data.nodes[uid].lines+'</lines>\n';
+		xml += '\t\t<top>'+data.nodes[uid].top+'</top>';
+		xml += '\t\t<left>'+data.nodes[uid].left+'</left>';
 		xml += '\t</node>\n';
 	}
 	for(var uid in data.connections){

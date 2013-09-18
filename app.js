@@ -28,6 +28,9 @@ app.get('/dev', handler.render);
 app.get('/dev/scripts', scriptsHandler.render);
 app.post('/msg',handler.msgHandle);
 
+var honeyHandler = require(__dirname+'/routes/honey_handler.js');
+app.get('/honey', honeyHandler.honey);
+
 var server = http.createServer(app);
 var io = sio.listen(server, {log: true});
 
