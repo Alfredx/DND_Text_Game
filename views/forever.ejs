@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title%></title>
+	<link href="public/css/general.css" rel="stylesheet" media="screen">
+</head>
+
+<body>
+	<div class="frontStyle">
+		<h1><%= title%></h1>
+		<button id='voice'>voice</button>
+		<img id="image">
+		<audio id="audio" controls="controls"></audio>
+	</div>
+	<script type="text/javascript" src="public/js/lib/jquery-1.9.0-min.js"></script>
+	<script type="text/javascript" src="public/js/security.js"></script>
+	<script src="http://cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
+	<script type="text/javascript" src="public/js/audiodisplay.js"></script>
+	<script type="text/javascript" src="public/js/recorderjs/recorder.js"></script>
+	<script type="text/javascript" src="public/js/AudioRecorder.js"></script>
+	<script type="text/javascript" src="public/js/voice2image.js"></script>
+</body>
+
+</html>
