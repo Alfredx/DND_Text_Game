@@ -1,0 +1,1 @@
+mkdir drama_scripts && mkdir logs
