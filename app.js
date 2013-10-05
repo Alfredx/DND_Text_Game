@@ -10,6 +10,8 @@ var sio = require('socket.io');
 
 var app = express();
 
+var version = 0.1;
+
 app.set('port', process.env.PORT || 8866);
 app.set('views', __dirname+'/views');
 app.set('view engine', 'ejs');
@@ -35,11 +37,13 @@ app.get('/forever', v2iHandler.render);
 var server = http.createServer(app);
 var io = sio.listen(server, {log: true});
 
-scriptsLoader.onload();
+scriptsLoader.onload(version);
 
 handler.initIO(io);//only for web user
+scriptsHandler.setVersion(version);
 scriptsHandler.initIO(io);	//io.of('/scripts')
 
 server.listen(app.get('port'), function(){
 	console.log('Server linstening on port '+app.get('port'));
 });
+

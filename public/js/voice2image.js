@@ -66,6 +66,9 @@ Voice2Image.prototype.debugDraw = function() {
 		var value = this.freqs[i];
 		var offset = -value - 131;
 		var barWidth = this.canvas.width/this.freqs.length;
+
+		var rectWidth = 2;
+		var rectHeight = 2;
 		
 		// this.drawContext.fillRect(i * barWidth-0.5*this.canvas.width, offset, 1, 1);
 		var iw = 4*r/this.freqs.length;
@@ -73,13 +76,13 @@ Voice2Image.prototype.debugDraw = function() {
 			var x = i*iw-r;
 			var y = Math.sqrt(r*r-(x)*(x));
 			var v = this.vectorRotate(-offset*2.5,x,y,true);
-			this.drawContext.fillRect(x+v.x, y+v.y, 1, 1);
+			this.drawContext.fillRect(x+v.x, y+v.y, rectWidth, rectHeight);
 		}
 		else if(i < this.freqs.length/2){
 			var x = i*iw-r;
 			var y = Math.sqrt(r*r-(x)*(x));
 			var v = this.vectorRotate(-offset*2.5,x,y,false);
-			this.drawContext.fillRect(x+v.x, y+v.y, 1, 1);
+			this.drawContext.fillRect(x+v.x, y+v.y, rectWidth, rectHeight);
 			//bot circle
 			//this.drawContext.fillRect(x , Math.sqrt(r*r-(x)*(x))+offset*2.5, 1,1);
 		}
@@ -87,7 +90,7 @@ Voice2Image.prototype.debugDraw = function() {
 			var x = r-iw*(i-this.freqs.length/2);
 			var y = -Math.sqrt(r*r-(x)*(x));
 			var v = this.vectorRotate(offset*2.5,x,y,false);//it should be true here
-			this.drawContext.fillRect(x+v.x, y+v.y, 1, 1);
+			this.drawContext.fillRect(x+v.x, y+v.y, rectWidth, rectHeight);
 			//upper circle
 			//this.drawContext.fillRect(x, -Math.sqrt(r*r-(x)*(x))-offset*2.5, 1,1);
 		}
@@ -95,7 +98,7 @@ Voice2Image.prototype.debugDraw = function() {
 			var x = r-iw*(i-this.freqs.length/2);
 			var y = -Math.sqrt(r*r-(x)*(x));
 			var v = this.vectorRotate(offset*2.5,x,y,true);//it should be false here
-			this.drawContext.fillRect(x+v.x, y+v.y, 1, 1);
+			this.drawContext.fillRect(x+v.x, y+v.y, rectWidth, rectHeight);
 		}
 	}
 };
