@@ -7,9 +7,27 @@ Logger = function (params) {
 	this.logName = (new Date()).toDateString().replace(/[ ]/g,'-').toString() + '--' + (params.logName || ('Anonymous Log-' + anonymousSeq++));
 	this.module = params.module || 'None';
 	var _this = this;
-	this.log = function(data) {
+	this.log = function(data,level) {
+		if(!level)
+			level = 'ok';
 		if(data[data.length-1] !== '\n')
 			data += '\n';
+		switch(level){
+			case 'error':
+			case 'ERROR':
+				data = '[ ERROR ] '+data;
+				break;
+			case 'ok':
+			case 'OK':
+				data = '[ OK ] '+data;
+				break;
+			case 'warning':
+			case 'WARNING':
+				data = '[ WARNING ] '+data;
+				break;
+			default:
+				break;
+		}
 		data = '[ '+(new Date()).toLocaleTimeString() + ' ] ' + data;
 		fs.appendFile('logs/'+this.logName,data,function(err){
 			if(err)
@@ -28,8 +46,8 @@ Logger = function (params) {
 		initText += '[ Module Name ] ' + _this.module + '\n';
 		this.log(initText);
 	}
+	this.log('---------------------------------------');
 	logs.push(this);
-	
 }
 
 exports.Logger = Logger;

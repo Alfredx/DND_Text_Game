@@ -16,7 +16,7 @@ var readXML = function(dir) {
 		var parser = new xml2js.Parser();
 		parser.parseString(data, function(err, result) {
 			if (err) {
-				logger.log('[ ERROR ] invalid XML file: ' + dir);
+				logger.log('invalid XML file: ' + dir,'error');
 			}
 			var root = {
 				entry: new Array(),
@@ -29,7 +29,7 @@ var readXML = function(dir) {
 					delete result[name]['version'];
 				else {
 					validFiles--;
-					logger.log('[ ERROR ] invalid XML version -created by newer versions: ' + dir);
+					logger.log('invalid XML version -created by newer versions: ' + dir,'error');
 					return;
 				}
 				var o_node = result[name]['node'];
@@ -63,11 +63,11 @@ exports.onload = function(version) {
 		var i = 0;
 		for (var name in roots)
 			i++;
-		logger.log('[ OK ] loading XMLs...current loaded: '+i);
+		logger.log('loading XMLs...current loaded: '+i,'ok');
 		console.log('[ OK ] loading XMLs...current loaded: '+i);
 		if (i == validFiles) {
 			clearInterval(id);
-			logger.log('[ OK ] All XML loaded. Total: '+i);			
+			logger.log('All XML loaded. Total: '+i,'ok');			
 			console.log('[ OK ] All XML loaded. Total: '+i);			
 		}
 	}, 1000);

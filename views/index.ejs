@@ -2,26 +2,113 @@
 <html>
 <head>
 	<title><%= title%></title>
-	<link href="public/css/general.css" rel="stylesheet" media="screen">
-	<style type="text/css">
+	<link href="public/css/index.css" rel="stylesheet" media="screen">
+	<style type="text/css" media="screen">
 		body{
-			background: url('public/img/bg_star.jpg') no-repeat;
+			margin: 0 0 0 0;
 			background-size: cover;
 			-webkit-background-size:cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
 		}
+		#canvas{
+				position:absolute;
+				top: 0px;
+				left: 0px;
+		}
+		#bg{
+			display: none;
+		}
 	</style>
 </head>
 
 <body>
-	<div class="frontStyle" text-align="center">
-		<h1><%= title%></h1>
-		<img id="img" src="public/img/under_construction.jpg">
-		<div margin-top="200px">
-			<h1 top="150%" position="relative">To forever</h1>
+	<div id="rainy">
+		<img id="bg" src="public/img/bg_star.jpg" alt="background">
+		<canvas id="canvas"></canvas>
+		<canvas style="position: absolute; top: 0px; left: 0px; z-index: 100; opacity: 1;"></canvas>
+	</div>
+	<div id="soundholder">
+		<audio id="sound" src="public/media/index_bgm_low.mp3" loop="loop" autoplay="autoplay"/>
+	</div>
+	<div class="frontStyle" text-align="center" id="container">
+		<div id="actualbody">
+			<h1><%= title%></h1>
+			<img id="img" src="public/img/under_construction.jpg">
+			<div margin-top="200px">
+				<h1 top="150%" position="relative">To forever</h1>
+			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="public/js/lib/jquery-1.9.0-min.js"></script>
+	<script type="text/javascript" src='public/js/lib/rainyday.js'></script>
+	<script type="text/javascript" src='public/js/lib/socket.io.min.js'></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			$("#container").css("width",window.innerWidth);
+			$('#sound')[0].volume = 0.3;
+			function getURLParameter(name) {
+				return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+			}
+			io.connect('/');
+			var image = document.getElementById("bg");
+			image.onload = function(){
+				var engine = new RainyDay('canvas','bg', window.innerWidth, window.innerHeight);
+				var preset = getURLParameter("preset") || 1;
+					if (preset == 1) {
+						engine.gravity = engine.GRAVITY_NON_LINEAR;
+						engine.trail = engine.TRAIL_DROPS;
+						engine.rain([ engine.preset(3, 3, 0.88), engine.preset(5, 5, 0.9), engine.preset(6, 2, 1) ], 100);
+					} else if (preset == 2) {
+						engine.gravity = engine.GRAVITY_NON_LINEAR;
+						engine.trail = engine.TRAIL_DROPS;
+						engine.VARIABLE_GRAVITY_ANGLE = Math.PI / 8;
+						engine.rain([ engine.preset(0, 2, 0.5), engine.preset(4, 4, 1) ], 50);
+					}
+			};
+			image.crossOrigin = "anonymous";
+			image.src = "public/img/bg_star.jpg";
+			
+		}
+	</script>
 </body>
 
 </html>
+
+<!-- 			function getURLParameter(name) {
+				return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+			}
+
+			function demo() {
+				var image = document.getElementById('background');
+				image.onload = function() {
+					var engine = new RainyDay('canvas','background', window.innerWidth, window.innerHeight);
+
+					var preset = getURLParameter("preset") || 1;
+					if (preset == 1) {
+						engine.gravity = engine.GRAVITY_NON_LINEAR;
+						engine.trail = engine.TRAIL_DROPS;
+						engine.rain([ engine.preset(3, 3, 0.88), engine.preset(5, 5, 0.9), engine.preset(6, 2, 1) ], 100);
+					} else if (preset == 2) {
+						engine.gravity = engine.GRAVITY_NON_LINEAR;
+						engine.trail = engine.TRAIL_DROPS;
+						engine.VARIABLE_GRAVITY_ANGLE = Math.PI / 8;
+						engine.rain([ engine.preset(0, 2, 0.5), engine.preset(4, 4, 1) ], 50);
+					}
+				};
+				image.crossOrigin = "anonymous";
+				image.src="http://i.imgur.com/" + getURLParameter('imgur') + ".jpg";
+
+				var youtube = getURLParameter("youtube");
+				if (youtube) {
+					var div = document.getElementById("sound");
+
+					var player = document.createElement('iframe');
+					player.frameborder = "0";
+					player.height = "1";
+					player.width = "1";
+					player.src = "https://youtube.com/embed/" + youtube + "?autoplay=1&controls=0&showinfo=0&autohide=1&loop=1";
+					div.appendChild(player);
+				}
+			}
+ -->

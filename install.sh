@@ -1,1 +1,1 @@
-mkdir drama_scripts && mkdir logs
+npm install && mkdir drama_scripts && mkdir logs

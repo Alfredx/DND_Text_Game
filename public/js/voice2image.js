@@ -70,7 +70,7 @@ Voice2Image.prototype.debugDraw = function() {
 		var rectWidth = 2;
 		var rectHeight = 2;
 		
-		// this.drawContext.fillRect(i * barWidth-0.5*this.canvas.width, offset, 1, 1);
+		//this.drawContext.fillRect(i * barWidth-0.5*this.canvas.width, offset, 1, 1);
 		var iw = 4*r/this.freqs.length;
 		if(i < this.freqs.length/4){
 			var x = i*iw-r;

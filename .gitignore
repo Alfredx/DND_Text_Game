@@ -21,6 +21,9 @@ node_modules/
 # for WebStorm
 .idea/
 
+#for media
+public/media/ost
+
 # for files saving directory
 tmp/
 drama_scripts/

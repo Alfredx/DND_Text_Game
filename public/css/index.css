@@ -1,4 +1,8 @@
 .frontStyle{
+	z-index: 101;
+	position: absolute;
+	top: 0;
+	left: 0;
 	margin-left: 0 auto;
 	text-align: center;
 }
@@ -11,4 +15,11 @@
 .leftAligned{
 	margin-left: 0px;
 	text-align: left;
+}
+
+#actualbody{
+	display: block;
+	position: relative;
+	margin-left: 0 auto;
+	text-align: center;
 }

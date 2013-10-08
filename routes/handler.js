@@ -4,12 +4,6 @@ var loader = require(__dirname + '/scripts_loader.js');
 
 var scriptsRoots = loader.getRoots();
 
-var log = function(content) {
-	var date = new Date();
-	date = date.toLocaleTimeString();
-	console.log('['+date+"]\n"+content);
-};
-
 //used in dev
 var initSocket = function(socket){
 	socket.emit('hello', 'hello this is server! let\'s play!');
@@ -17,16 +11,16 @@ var initSocket = function(socket){
 	for(var name in scriptsRoots){
 		currentScripts = scriptsRoots[name];
 	}
-	socket.emit('msg', {
-		pre: '['+[currentScripts.name]+']',
-		msg: currentScripts.entry[0].lines
-	});
+	// socket.emit('msg', {
+	// 	pre: '['+[currentScripts.name]+']',
+	// 	msg: currentScripts.entry[0].lines
+	// });
 	socket.on('echo', function(data){
-		log('socket now is set up');
+		console.log('socket now is set up');
 	});
 
 	socket.on('msg', function(data){
-		log('[user]: '+data);
+		console.log('[user]: '+data);
 		socket.emit('msg', {
 			pre : 'echo msg: ',
 			msg : data, 
@@ -47,6 +41,15 @@ exports.render = function(req, res) {
 		title : "For Development"
 	};
 	res.render('dev_index',context);
+};
+
+exports.newConnection= function(io, logger){
+	io.sockets.on('connection', function(socket){
+		var ip = socket.handshake.address.address;
+		var port = socket.handshake.address.port;
+		logger.log('New connection - '+ip+':'+port,'ok');
+		console.log('New connection - '+ip+':'+port);
+	});
 };
 
 exports.initIO = function(io) {
