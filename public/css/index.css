@@ -4,7 +4,7 @@
 	top: 0;
 	left: 0;
 	margin-left: 0 auto;
-	text-align: center;
+	/*text-align: center;*/
 }
 
 .rightAligned{
@@ -20,6 +20,27 @@
 #actualbody{
 	display: block;
 	position: relative;
-	margin-left: 0 auto;
-	text-align: center;
+	text-align: right;
+	float: right;
+}
+
+body{
+	margin: 0 0 0 0;
+	background-size: cover;
+	-webkit-background-size:cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+}
+#canvas{
+	position:absolute;
+	top: 0px;
+	left: 0px;
+}
+#bg{
+	display: none;
+}
+
+h1{
+	color: rgba(220,100,50,1);
+	font-family: 'Cantarell';
 }

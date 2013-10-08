@@ -30,7 +30,9 @@ var initSocket = function(socket){
 
 exports.index = function(req, res) {
 	var context = {
-		title : "Coming soon..."
+		doctitle: "Alfred's yard",
+		title1 : "Nice to meet you",
+		title2 : "Dear friend"
 	};
 	res.render('index',context);
 };
