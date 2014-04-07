@@ -18,6 +18,6 @@ var checkSignature = function(req){
 
 exports.render = function(req, res) {
 	if (checkSignature(req)) {
-		res.send(req.echostr);
+		res.send(200, req.query.echostr);
 	};
 };
