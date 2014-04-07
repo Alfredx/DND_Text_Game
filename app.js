@@ -13,6 +13,7 @@ var Logger = require(__dirname+'/routes/logger.js').Logger;
 
 var app = express();
 
+var wechatToken = 'alfredwechattoken';
 var version = 0.1;
 var logger = new Logger({logName:'NodeServer',module:'app.js'});
 logger.log('starting server','ok');
@@ -30,6 +31,12 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use('/public', express.static(path.join(__dirname, 'public'/*, {maxAge: 604800000}*/)));
 //use md5 check to clear cache? how?
+//wechat message
+app.use(express.query());
+app.use('/wechat',wechat(wechatToken,function(req,res,next){
+	var message = req.weixin;
+	res.reply('your message is: '+message);
+}));
 
 app.get('/', handler.index);
 app.get('/dev', handler.render);
