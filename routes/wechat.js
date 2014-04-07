@@ -20,6 +20,7 @@ var checkSignature = function(req){
 };
 
 List.add('listtest',[
+	['this text contains no reply!',function(info,req,res){}],
 	['reply {a} to see A',function(info,req,res){
 		res.nowait('AAAAAAA');
 	}],
@@ -32,7 +33,6 @@ List.add('listtest',[
 ]);
 
 exports.handler = wechat(wechatToken,wechat.text(function(info,req,res,next){
-	res.reply('please enter you choice:');
 	res.wait('listtest');
 }));
 
