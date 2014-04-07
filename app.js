@@ -1,7 +1,7 @@
 
 // import modules
-var wechat = require('wechat');
 var express = require('express');
+var wechat = require(__dirname+'/routes/wechat.js');
 var handler = require(__dirname+'/routes/handler.js');
 var scriptsHandler = require(__dirname+'/routes/scripts_handler.js');
 var scriptsLoader = require(__dirname+'/routes/scripts_loader.js');
@@ -13,7 +13,6 @@ var Logger = require(__dirname+'/routes/logger.js').Logger;
 
 var app = express();
 
-var wechatToken = 'alfredwechattoken';
 var version = 0.1;
 var logger = new Logger({logName:'NodeServer',module:'app.js'});
 logger.log('starting server','ok');
@@ -27,21 +26,19 @@ app.use(express.logger('dev'));
 
 app.use(express.methodOverride());
 
-//app.use(express.session());
 app.use(app.router);
 app.use('/public', express.static(path.join(__dirname, 'public'/*, {maxAge: 604800000}*/)));
 //use md5 check to clear cache? how?
 //wechat message
 app.use(express.query());
-app.use('/wechat',wechat(wechatToken,function(req,res,next){
-	var message = req.weixin;
-	res.reply('your message is: '+message);
-}));
+app.use(express.cookieParser());
+app.use(express.session({secret:'everything can be a secret?', cookie:{maxAge:900000}}));
+app.use('/wechat',wechat.handler);
 
 app.get('/', handler.index);
 app.get('/dev', handler.render);
 app.get('/dev/scripts', scriptsHandler.render);
-app.get('/wechat_verify',wechatVerify.render);
+app.get('/wechat',wechatVerify.render);
 app.post('/msg',handler.msgHandle);
 
 
