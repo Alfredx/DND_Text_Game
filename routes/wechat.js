@@ -22,8 +22,7 @@ var checkSignature = function(req){
 List.add('listtest',[
 	['this text contains no reply!',function(info,req,res){}],
 	['reply {a} to see A',function(info,req,res){
-		res.nowait();
-		res.reply('AAAAAAA');
+		res.wait('listtest');
 	}],
 	['reply {b} to see B',function(info,req,res){
 		res.nowait('BBBBBBB');
