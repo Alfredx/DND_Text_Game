@@ -1,5 +1,7 @@
 
 // import modules
+var wechat = require('wechat');
+var wechatVerify = require('wechatVerifyURL.js');
 var express = require('express');
 var handler = require(__dirname+'/routes/handler.js');
 var scriptsHandler = require(__dirname+'/routes/scripts_handler.js');

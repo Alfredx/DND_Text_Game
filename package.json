@@ -9,6 +9,7 @@
 		"express": "*",
 		"ejs": "*",
 		"socket.io": "*",
-		"xml2js": "*"
+		"xml2js": "*",
+		"wechat": "*"
 	}
 }

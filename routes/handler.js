@@ -26,6 +26,10 @@ var initSocket = function(socket){
 			msg : data, 
 		});
 	});
+
+	socket.on('redirect', function(data){
+		
+	});
 };
 
 exports.index = function(req, res) {
