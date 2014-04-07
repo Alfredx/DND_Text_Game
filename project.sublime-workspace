@@ -1,0 +1,1085 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"worl",
+				"worldName"
+			],
+			[
+				"YES",
+				"YES_NO"
+			],
+			[
+				"wo",
+				"worldNameText"
+			],
+			[
+				"world",
+				"worldNameText"
+			],
+			[
+				"start",
+				"startz"
+			],
+			[
+				"flight",
+				"flightNpcIndex_id"
+			],
+			[
+				"addnpc",
+				"AddFlightNpcPosition"
+			],
+			[
+				"startre",
+				"StartRecording"
+			],
+			[
+				"airli",
+				"airline"
+			],
+			[
+				"fli",
+				"flightNpcIndex_airlineid"
+			],
+			[
+				"fligh",
+				"flightNpcIndex_id"
+			],
+			[
+				"subli",
+				"sublines"
+			],
+			[
+				"last",
+				"lastRecordingDot"
+			],
+			[
+				"stop",
+				"stopy"
+			],
+			[
+				"stopnpc",
+				"stopnpcid"
+			],
+			[
+				"flightnpcin",
+				"flightNpcIndex_id"
+			],
+			[
+				"star",
+				"startx"
+			],
+			[
+				"is",
+				"isCoordinated"
+			],
+			[
+				"flightnpc",
+				"flightNpcIndex_airlineid"
+			],
+			[
+				"onudp",
+				"OnUdpLinkWaypointArrived"
+			],
+			[
+				"flig",
+				"flightNpcIndex_id"
+			],
+			[
+				"wor",
+				"worldid"
+			],
+			[
+				"get",
+				"GetWorldId"
+			],
+			[
+				"load",
+				"LoadFile"
+			],
+			[
+				"file",
+				"fileName"
+			],
+			[
+				"name",
+				"nametoid"
+			],
+			[
+				"wa",
+				"waitingnpc"
+			],
+			[
+				"save",
+				"SaveFile"
+			],
+			[
+				"Onmou",
+				"OnMouseWheel"
+			],
+			[
+				"dra",
+				"draggingDot"
+			],
+			[
+				"inRea",
+				"inRealWorldX"
+			],
+			[
+				"line",
+				"lines"
+			],
+			[
+				"action",
+				"actiontrace"
+			],
+			[
+				"actio",
+				"action"
+			],
+			[
+				"npc",
+				"npcPositions"
+			],
+			[
+				"waypo",
+				"waypoints"
+			],
+			[
+				"evt",
+				"EVT_LEFT_UP"
+			],
+			[
+				"Base",
+				"BaseDot"
+			],
+			[
+				"Draw",
+				"DrawText"
+			],
+			[
+				"lin",
+				"lines"
+			],
+			[
+				"ex",
+				"exists"
+			],
+			[
+				"mindis",
+				"mindistance"
+			],
+			[
+				"mapsi",
+				"mapSize"
+			],
+			[
+				"rea",
+				"realx"
+			],
+			[
+				"inre",
+				"inRealWorldY"
+			],
+			[
+				"draw",
+				"drawPanel"
+			],
+			[
+				"way",
+				"waypoints"
+			],
+			[
+				"dot",
+				"dotGrid"
+			],
+			[
+				"mouse",
+				"mouseY"
+			],
+			[
+				"cure",
+				"currentActionPos"
+			],
+			[
+				"current",
+				"currentActionPos"
+			],
+			[
+				"curren",
+				"currentActionPos"
+			],
+			[
+				"mapsiz",
+				"mapSizeText"
+			],
+			[
+				"Clear",
+				"ClearDrawPanel"
+			],
+			[
+				"offs",
+				"offsetY"
+			],
+			[
+				"off",
+				"offsetX"
+			],
+			[
+				"ActionAdd",
+				"ActionAddDot"
+			],
+			[
+				"li",
+				"Line"
+			],
+			[
+				"clea",
+				"Clear"
+			],
+			[
+				"mapi",
+				"mapid"
+			],
+			[
+				"map",
+				"mapid"
+			],
+			[
+				"Dra",
+				"Draw"
+			],
+			[
+				"left",
+				"LeftClick"
+			],
+			[
+				"npcposi",
+				"npcposition"
+			],
+			[
+				"Action",
+				"ActionAddDot"
+			],
+			[
+				"ff",
+				"ff0000"
+			],
+			[
+				"IDTE",
+				"ID_TEXT_Z"
+			],
+			[
+				"conve",
+				"ConvertCoord"
+			],
+			[
+				"offse",
+				"offsetX"
+			],
+			[
+				"onmou",
+				"OnMouseMove"
+			],
+			[
+				"mous",
+				"mouseX"
+			],
+			[
+				"base",
+				"BaseDot"
+			],
+			[
+				"ACtiondel",
+				"ActionDeleteAirLine"
+			],
+			[
+				"Actiondele",
+				"ActionDeleteAirLine"
+			],
+			[
+				"ACtionadd",
+				"ActionAddAirLine"
+			],
+			[
+				"CLea",
+				"ClearAll"
+			],
+			[
+				"Main",
+				"MainApp"
+			],
+			[
+				"C",
+				"ClearAll"
+			],
+			[
+				"righ",
+				"RightClick"
+			],
+			[
+				"lef",
+				"LeftClick"
+			],
+			[
+				"ri",
+				"RightClick"
+			],
+			[
+				"npcp",
+				"NpcPosition"
+			],
+			[
+				"Dot",
+				"DotPanel"
+			],
+			[
+				"client",
+				"clientsocket"
+			],
+			[
+				"exce",
+				"Exception"
+			],
+			[
+				"drawRec",
+				"DrawRectangle"
+			],
+			[
+				"bou",
+				"bonusDict"
+			],
+			[
+				"py",
+				"physical_critical_reduce_rate"
+			],
+			[
+				"magical",
+				"magical_defend"
+			],
+			[
+				"hit",
+				"hit_accuracy"
+			],
+			[
+				"magicalskill",
+				"magical_skill_boost_resist"
+			],
+			[
+				"magicalhi",
+				"magical_hit_accuracy"
+			],
+			[
+				"magicalre",
+				"magical_resist"
+			],
+			[
+				"ph",
+				"physical_defend"
+			],
+			[
+				"label",
+				"labelDic"
+			],
+			[
+				"labe",
+				"labelDic"
+			],
+			[
+				"lab",
+				"labelDic"
+			],
+			[
+				"com",
+				"componentsCount"
+			],
+			[
+				"produ",
+				"productID"
+			],
+			[
+				"reci",
+				"recipe_list"
+			],
+			[
+				"weapon",
+				"weapontypes"
+			],
+			[
+				"we",
+				"weapontypes"
+			],
+			[
+				"armo",
+				"armortypes"
+			],
+			[
+				"etc",
+				"etcTxt"
+			],
+			[
+				"write",
+				"writedata"
+			],
+			[
+				"gather",
+				"gather_list"
+			],
+			[
+				"gath",
+				"gather_src"
+			],
+			[
+				"stri",
+				"strings2"
+			],
+			[
+				"item",
+				"itemDetailTxt"
+			],
+			[
+				"add",
+				"AddDot"
+			],
+			[
+				"mos",
+				"monsterPair"
+			],
+			[
+				"try",
+				"try	Try/Except"
+			],
+			[
+				"str",
+				"stringPairs"
+			],
+			[
+				"vali",
+				"vallist"
+			],
+			[
+				"des",
+				"desc"
+			],
+			[
+				"desc",
+				"desclines"
+			],
+			[
+				"dec",
+				"DECRYPT_BYTECODE45"
+			],
+			[
+				"ID_BUTTON",
+				"ID_BUTTON_CHANGEEDIT"
+			],
+			[
+				"Set",
+				"SetValue"
+			],
+			[
+				"colo",
+				"color"
+			],
+			[
+				"onmo",
+				"OnMouseMove"
+			],
+			[
+				"body",
+				"bodyinxml"
+			],
+			[
+				"bod",
+				"bodyinxml"
+			],
+			[
+				"ids",
+				"idsinxml"
+			],
+			[
+				"id",
+				"id_start"
+			],
+			[
+				"print",
+				"PrintPath"
+			],
+			[
+				"floa",
+				"FLOAT_EQUAL"
+			],
+			[
+				"it",
+				"iter"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 1662,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/handler.js",
+			"settings":
+			{
+				"buffer_size": 1531,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "var fs = require('fs');\nvar anonymousSeq = 0;\nvar refresherID = null;\nvar logs = new Array();\n\nLogger = function (params) {\n	this.logName = (new Date()).toDateString().replace(/[ ]/g,'-').toString() + '--' + (params.logName || ('Anonymous Log-' + anonymousSeq++));\n	this.module = params.module || 'None';\n	var _this = this;\n	this.log = function(data,level) {\n		if(!level)\n			level = 'ok';\n		if(data[data.length-1] !== '\\n')\n			data += '\\n';\n		switch(level){\n			case 'error':\n			case 'ERROR':\n				data = '[ ERROR ] '+data;\n				break;\n			case 'ok':\n			case 'OK':\n				data = '[ OK ] '+data;\n				break;\n			case 'warning':\n			case 'WARNING':\n				data = '[ WARNING ] '+data;\n				break;\n			default:\n				break;\n		}\n		data = '[ '+(new Date()).toLocaleTimeString() + ' ] ' + data;\n		fs.appendFile('logs/'+this.logName,data,function(err){\n			if(err)\n				console.log('[ ERROR ] Can not append to LOG file: logs/'+_this.logName+'\\n\\t'+'- '+err.toString());\n		});\n	};\n	if (!fs.existsSync('logs/'+this.logName)) {\n		fs.open('logs/' + this.logName, 'a+', function(err, fd) {\n			if (err) {\n				console.log('[ ERROR ] Can not open LOG file: logs/' + _this.logName + '\\n\\t' + '-' + err.toString());\n				return;\n			}\n			fs.close(fd);\n		});\n		var initText = 'Log file created. ';\n		initText += '[ Module Name ] ' + _this.module + '\\n';\n		this.log(initText);\n	}\n	this.log('---------------------------------------');\n	logs.push(this);\n}\n\nexports.Logger = Logger;\n\nexports.logDailyRefresher = function(){\n	var refresher = function(){\n		var id = setInterval(function(){\n			var h = (new Date()).getHours();\n			if(h === 4){\n				for(var i = 0; i < logs.length; i++){\n					var name = logs[i].logName.substr(logs[i].logName.indexOf('--'));\n					var module = logs[i].module;\n					logs[i] = new Logger({logName:name,module:module});\n				} \n			}\n		},3600000);\n		return id;\n	};\n	refresherID = refresher();\n};",
+			"file": "routes/logger.js",
+			"file_size": 1943,
+			"file_write_time": 130256746889196391,
+			"settings":
+			{
+				"buffer_size": 1874,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"C+",
+				"Set Syntax: C++"
+			],
+			[
+				"setsyn",
+				"Set Syntax: YAML"
+			],
+			[
+				"setsyntax p",
+				"Set Syntax: PHP"
+			],
+			[
+				"setphp",
+				"Set Syntax: PHP"
+			],
+			[
+				"setsy",
+				"Set Syntax: PHP"
+			],
+			[
+				"setph",
+				"Set Syntax: PHP"
+			],
+			[
+				"setsyntax",
+				"Set Syntax: Lua"
+			],
+			[
+				"set",
+				"Set Syntax: Textile"
+			],
+			[
+				"",
+				"Code Folding: Fold Tag Attributes"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"for",
+				"Format: Javascript"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Git/DND_Text_Game/logs/Sat-Mar-15-2014--NodeServer",
+		"/D/Git/DND_Text_Game/app.js",
+		"/D/Git/DND_Text_Game/install.sh",
+		"/D/workspace/projects/Utilities/mappuncher/puncher.sublimeproject.sublime-project",
+		"/D/workspace/projects/Utilities/DataAnalyzer/npc_flighttransporter.py",
+		"/D/workspace/projects/Utilities/DataAnalyzer/client_airports.xml",
+		"/D/workspace/games/AION_USA/Data/FlightPath/client_airline.xml",
+		"/D/workspace/projects/Utilities/DataAnalyzer/client_npcs.xml",
+		"/C/Users/Alfred/Desktop/time.html",
+		"/D/workspace/games/AION_USA/Data/World/World/WorldId.xml",
+		"/D/workspace/games/AION_USA/Data/World/World/WorldId2.xml",
+		"/D/workspace/games/AION_USA/Data/USA/world/client_abyss.xml",
+		"/D/workspace/games/AION45/data/world/WorldId.xml",
+		"/D/workspace/projects/Utilities/CPURobber/cpurobber.py",
+		"/C/Users/Alfred/Desktop/test.cpp",
+		"/D/workspace/games/AION_USA/Data/Npcs/Npcs/npc_mesh_blend.txt",
+		"/D/workspace/games/AION_USA/Data/Npcs/Npcs/npc_ui.xml",
+		"/D/workspace/games/AION_USA/Data/FlightPath/fly_path.xml",
+		"/D/workspace/games/AION_USA/Data/FlightPath/client_airports.xml",
+		"/D/workspace/games/AION_USA/Data/Npcs/Npcs/client_ai_datas.xml",
+		"/D/workspace/projects/Utilities/CPURobber/pack.bat",
+		"/D/workspace/projects/Utilities/CPURobber/setup.py",
+		"/D/workspace/projects/Utilities/mappuncher/setup.py",
+		"/D/workspace/projects/Utilities/mappuncher/puncher.py",
+		"/D/workspace/projects/Utilities/mappuncher/puncher_old.py",
+		"/D/workspace/projects/Utilities/mappuncher/DrawElements.py",
+		"/E/Program Files (x86)/Hearthstone/client.config",
+		"/C/ProgramData/Battle.net/Agent/agent.db",
+		"/E/Program Files (x86)/Battle.net/.agent.db",
+		"/E/Program Files (x86)/Hearthstone/Launcher.db",
+		"/E/Program Files (x86)/Hearthstone/battle.net.dll",
+		"/E/Program Files (x86)/Hearthstone/bnet_client.log",
+		"/E/Program Files (x86)/Hearthstone/ConnectLog.txt",
+		"/D/workspace/games/AION_USA/L10N/1_enu/data/data/Strings/client_strings_npc.xml",
+		"/D/workspace/games/AION_USA/Data/Npcs/Npcs/client_npcs.xml",
+		"/D/workspace/projects/Utilities/mappuncher/actions.py",
+		"/D/workspace/projects/Utilities/mappuncher/dotpanels.py",
+		"/D/workspace/projects/Utilities/mappuncher/dotpanels.pyc",
+		"/D/workspace/projects/Utilities/DataAnalyzer/worldId.py",
+		"/E/Program Files (x86)/WakfuChina/game/wakfu.ici",
+		"/E/Program Files (x86)/WakfuChina/transition.conf",
+		"/D/workspace/games/AION45/data/npcs/npcs/monster_list.py",
+		"/D/workspace/projects/Utilities/DataAnalyzer/world_maps.py",
+		"/D/workspace/games/AION_USA/L10N/1_enu/data/data/Strings/client_strings_msg.xml",
+		"/E/Program Files (x86)/WakfuChina/game/contents/i18n/i18n.index",
+		"/E/Program Files (x86)/WakfuChina/game/contents/i18n/i18n.index2",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.002/i18n/texts_ch.properties",
+		"/E/Program Files (x86)/WakfuChina/game/config.properties",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/131/instance.xml",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/world.xml",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/gazettes.dat",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/account.xml",
+		"/E/Program Files (x86)/WakfuChina/transition/qt.conf",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.465/com/ankamagames/wakfu/client/log4j.properties",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.347/coords.xml",
+		"/C/Users/Alfred/AppData/Local/Ankama/沃土/game/logs/wakfu.log.1",
+		"/C/Users/Alfred/AppData/Local/Ankama/沃土/game/logs/wakfu_camera.log",
+		"/C/Users/Alfred/AppData/Local/Ankama/沃土/game/logs/wakfu_lua.log",
+		"/C/Users/Alfred/AppData/Local/Ankama/沃土/game/logs/wakfu_fileLoading.log",
+		"/E/Program Files (x86)/WakfuChina/game/contents/bdata/data.bdat",
+		"/E/Program Files (x86)/WakfuChina/game/contents/bdata/indexes.bdat",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.730/644.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.326/map.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.302/350.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.643/-2/coords.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.941/-1/map.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.938/map.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.655/coords.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.713/-1/coords.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.354/map_def.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.521/0_0",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.588/0_-1",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.605/-1_0",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.250/data.amd",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.012/0_0",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.530/META-INF/MANIFEST.MF",
+		"/E/Program Files (x86)/WakfuChina/game/contents/data/data - 副本/tutorials.xml",
+		"/E/Program Files (x86)/WakfuChina/game/contents/data/data - 副本/graphics.xml",
+		"/E/Program Files (x86)/WakfuChina/game/contents/data/data - 副本/ambiance.dat",
+		"/E/Program Files (x86)/WakfuChina/game/core/META-INF/MANIFEST.MF",
+		"/E/Program Files (x86)/WakfuChina/game/core/com/ankamagames/wakfu/client/chat/console/ChatCommandDescriptorSet_ch.xml",
+		"/E/Program Files (x86)/WakfuChina/game/contents/data/data - 副本/chat.xml",
+		"/E/Program Files (x86)/WakfuChina/game/contents/data/data - 副本/shortcuts.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.341/genericIEActions/534.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.349/genericIEActions/530.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.997/ie_actions/904.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.503/ie_actions/2387.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.766/ie_actions/5351.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.411/scenario/564.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.528/scenario/-847.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.195/scenario/-821.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.920/scenario/-725.lua",
+		"/E/Program Files (x86)/WakfuChina/game/contents/scripts/scripts.index",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.190/interactiveDialogs/protector149.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.514/genericIEActions/38.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.273/events/670.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.962/events/142.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.604/scenario/595.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.335/scenario/560.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.899/scenario/499.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.433/ie_actions/679.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.823/99.lua",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.589/coM.class",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.977/cOM.class",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.260/com.class",
+		"/E/Program Files (x86)/WakfuChina/game/core/com/ankamagames/wakfu/client/log4j.properties",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/null/null/null/chat.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.899/com/ankamagames/wakfu/client/console/WakfuDebugConsoleCommandDescriptorSet.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.721/com/ankamagames/wakfu/client/chat/console/ChatCommandDescriptorSet_ch.xml",
+		"/E/Program Files (x86)/WakfuChina/game/core/A.class",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.784/com/ankamagames/baseImpl/client/proxyclient/base/console/command/NavigateToParentCommandSetCommand.class",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.554/com/ankamagames/wakfu/common/constants/build.properties",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.485/com/ankamagames/wakfu/client/console/WakfuConsoleCommandDescriptorSet.xml",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/9/instance.xml",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/546/notes.dat",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/612/instance.xml",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/546/instance.xml",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/questConfig.dat",
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/chat.xml",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.347/131.bin",
+		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.757/i18n/texts_ch.properties",
+		"/E/Program Files (x86)/WakfuChina/game/core.jar",
+		"/E/Program Files (x86)/WakfuChina/game/sb_default_background.png",
+		"/E/Program Files (x86)/WakfuChina/game/shortcuts.xml",
+		"/E/Program Files (x86)/WakfuChina/game/documentation/en/license.txt",
+		"/E/Program Files (x86)/WakfuChina/transition/transition.ici",
+		"/E/Program Files (x86)/WakfuChina/transition/VERSION",
+		"/E/Program Files (x86)/WakfuChina/transition/.transition/project_settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"loadfile",
+			"CreateNewMapData",
+			"AddWayPoint",
+			"loadfile",
+			"CreateNewMapData",
+			"LoadFile",
+			"HDFPlevel_Airport_Level",
+			">192",
+			"192",
+			"192<",
+			"dragon",
+			"GetWorldId",
+			"light_dragon",
+			"gl.",
+			"gl",
+			"line",
+			"ForwardDoAction",
+			"RedoLastAction",
+			"npcpositions",
+			"bpc",
+			"taskid",
+			"LoadFile",
+			"waitingnpc",
+			"savefile",
+			"AddWayPoint",
+			"ems.WayPoint",
+			"doaction",
+			"AddWayPoint",
+			"AddFlightNpcPosition",
+			"AddNpcPosition",
+			"npcposition",
+			"AddNpcPosition",
+			"Airline",
+			"AddSubLine",
+			"txt.write",
+			"LC1_ZONE_Teleport",
+			"lc1<",
+			"light_dragon<",
+			"lc1<",
+			"dragon",
+			">dark",
+			" '+",
+			"len",
+			"obstacle",
+			"teleporter",
+			"aethercraft",
+			"flight",
+			"npctitle_teleporter",
+			"STR_NPCTITLE_Teleporter",
+			"Palimedes",
+			"STR_NPCTITLE_TELEPORTER",
+			"flight transporter",
+			"teleporter",
+			"teleport",
+			"<npc_function_type>teleport",
+			"DynTeleporter",
+			"STR_Ab1_1011_DynTeleporter_Li",
+			"<npc_function_type>Teleport</npc_function_type>",
+			"STR_LDF5_Teleport_Statue",
+			"flight",
+			"<npc_function_type>teleport",
+			"<npc_function_type>",
+			"teleport",
+			"flight",
+			"delete",
+			"onloadbutton",
+			"AddNpcPosition",
+			"waitingnpc",
+			"print",
+			"itself",
+			"already",
+			"ActionAddLine",
+			"OnPaint",
+			"redo",
+			"print",
+			"addline",
+			"ForwardDoAction",
+			"redo",
+			"doaction",
+			"keydown",
+			"drawText",
+			"keydown",
+			"print",
+			" print",
+			"print",
+			"positions",
+			"waypoints",
+			"        \n",
+			"dotGrid",
+			"drawPanel",
+			"actiontrace",
+			"parent",
+			"type",
+			"drawcircle",
+			"panel",
+			"DotModul",
+			"DotModule",
+			"module",
+			"mainPanel",
+			"panel",
+			"Clear",
+			"clear",
+			"repaintall",
+			"obstacle",
+			"java.library",
+			"LF4_DIRECTPORTAL_GUARD",
+			"STR_LF4_DIRECTPORTAL_GUARD",
+			"STR_LF4_DIRECTPORTAL_GUARD_LI_FE_AE_LV60",
+			"LF1_",
+			"LF1_air",
+			"LF1_ZONE_",
+			"LC1_Airport_ZONE",
+			"LF1_Airport_ZONE",
+			"poeta",
+			"STR_LF1_Airport_ZONE",
+			"poeta",
+			"179",
+			"fee>179",
+			"LC1_ZONE_",
+			"LDF5a_DynAirport_SUB_L_5011",
+			"LDF5a_SUB_E2_L",
+			"lines.append",
+			"lines",
+			"DrawLine",
+			"extra_",
+			"ch_shoes_n_c2_p_13a",
+			"ws_05a",
+			"herb_n_c_10a"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"hyperlinkid",
+			"mprint",
+			"host",
+			"t",
+			"topPanel",
+			"mainPanel",
+			"skill_level",
+			"name",
+			"<map",
+			"list",
+			"%.2f",
+			"%f2",
+			"%2f",
+			"wx.ID_ANY",
+			"geoMap",
+			"p1x",
+			"str",
+			"List",
+			"3862",
+			"logger.log",
+			"{\n",
+			";\n{\n",
+			";\n",
+			";\\n",
+			"cord"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 1662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								748,
+								748
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "routes/handler.js",
+					"settings":
+					{
+						"buffer_size": 1531,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								924,
+								924
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "routes/logger.js",
+					"settings":
+					{
+						"buffer_size": 1874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1874,
+								1874
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 133.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"gene",
+				"/D/Git/DND_Text_Game/public/css/scripts_general.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 175.0,
+	"status_bar_visible": true
+}
