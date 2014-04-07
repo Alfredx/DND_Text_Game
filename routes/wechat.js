@@ -21,17 +21,18 @@ var checkSignature = function(req){
 
 List.add('listtest',[
 	['reply {a} to see A',function(info,req,res){
-		res.reply('AAAAAAA');
+		res.nowait('AAAAAAA');
 	}],
 	['reply {b} to see B',function(info,req,res){
-		res.reply('BBBBBBB');
+		res.nowait('BBBBBBB');
 	}],
 	['reply {c} to see C',function(info,req,res){
-		res.reply('CCCCCCC');
+		res.nowait('CCCCCCC');
 	}]
 ]);
 
 exports.handler = wechat(wechatToken,wechat.text(function(info,req,res,next){
+	res.reply('please enter you choice:');
 	res.wait('listtest');
 }));
 
