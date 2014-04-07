@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 
 var checkSignature = function(req){
+	var arr = new Array();
 	arr[0] = 'alfredwechattoken';
 	arr[1] = req.query.nonce;
 	arr[2] = req.query.timestamp;
@@ -10,6 +11,13 @@ var checkSignature = function(req){
 	if(shasum.digest('hex') == req.query.signature){
 		return true;
 	}
-	else
+	else{
 		return false;
+	}
 }
+
+exports.render = function(req, res) {
+	if (checkSignature(req)) {
+		res.send(req.echostr);
+	};
+};

@@ -1,11 +1,11 @@
 
 // import modules
 var wechat = require('wechat');
-var wechatVerify = require('wechatVerifyURL.js');
 var express = require('express');
 var handler = require(__dirname+'/routes/handler.js');
 var scriptsHandler = require(__dirname+'/routes/scripts_handler.js');
 var scriptsLoader = require(__dirname+'/routes/scripts_loader.js');
+var wechatVerify = require(__dirname+'/routes/wechat.js');
 var http = require('http');
 var path = require('path');
 var sio = require('socket.io');
@@ -34,6 +34,7 @@ app.use('/public', express.static(path.join(__dirname, 'public'/*, {maxAge: 6048
 app.get('/', handler.index);
 app.get('/dev', handler.render);
 app.get('/dev/scripts', scriptsHandler.render);
+app.get('/wechat_verify',wechatVerify.render);
 app.post('/msg',handler.msgHandle);
 
 

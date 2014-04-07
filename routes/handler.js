@@ -1,6 +1,8 @@
 var fs = require('fs');
 var xml2js = require('xml2js');
+// var wechatverify = require(__dirname + '/wechatVerifyURL.js');
 var loader = require(__dirname + '/scripts_loader.js');
+
 
 var scriptsRoots = loader.getRoots();
 
