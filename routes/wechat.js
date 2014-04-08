@@ -74,7 +74,7 @@ var parseRoots = function(){
 };
 
 exports.handler = wechat(wechatToken,wechat.text(function(info,req,res,next){
-	res.wait('listtest');
+	res.wait('startwechattest');
 }));
 
 exports.render = function(req, res) {
