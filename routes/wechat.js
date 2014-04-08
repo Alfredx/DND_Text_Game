@@ -38,7 +38,7 @@ var addNodeToList = function(node, name){
 	content.push([node.lines,function(info,req,res){}]);
 	for(var i in node.selections){
 		content.push(['回复 {'+i+'} :'+node.selections[i].lines,function(info,req,res){
-			res.wait(node.selections[i].selections[0].lines+name);
+			res.wait(node.selections[node.selections.length-i-1].selections[0].lines+name);
 		}]);
 		console.log('\t'+node.selections[i].selections[0].lines+name)
 	}
