@@ -40,12 +40,13 @@ var addNodeToList = function(node, name){
 		content.push(['回复 {'+i+'} :'+node.selections[i].lines,function(info,req,res){
 			res.wait(node.selections[i].selections[0].lines+name);
 		}]);
+		console.log('\t'+node.selections[i].selections[0].lines+name)
 	}
-	List.add(name+node.lines,content);
+	List.add(node.lines+name,content);
+	console.log(node.lines+name);
 };
 
 var SearchNode = function(node,name){
-	console.log(node);
 	if (node.type == 'end'){
 		List.add(node.lines+name,[
 			[node.lines+'\n--> ends <--',function(info,req,res){
@@ -55,7 +56,7 @@ var SearchNode = function(node,name){
 		return;
 	}
 	else if(node.type == 'branch'){
-		SearchNode(node.selections[0]);
+		SearchNode(node.selections[0],name);
 	}
 	else{
 		addNodeToList(node,name);
