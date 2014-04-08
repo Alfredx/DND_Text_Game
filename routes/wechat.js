@@ -2,6 +2,7 @@ var wechat = require('wechat');
 var List = wechat.List;
 var crypto = require('crypto');
 var wechatToken = 'alfredwechattoken';
+var roots = null;
 
 var checkSignature = function(req){
 	var arr = new Array();
@@ -32,13 +33,60 @@ List.add('listtest',[
 	}]
 ]);
 
+var addNodeToList = function(node, name){
+	var content = [];
+	content.push([node.lines,function(info,req,res){}]);
+	for(var i in node.selections){
+		content.push(['回复 {'+i+'} :'+node.selections[i].lines,function(info,req,res){
+			res.wait(node.selections[i].selections[0].lines+name);
+		}]);
+	}
+	List.add(name+node.lines,content);
+};
+
+var SearchNode = function(node,name){
+	console.log(node);
+	if (node.type == 'end'){
+		List.add(node.lines+name,[
+			[node.lines+'\n--> ends <--',function(info,req,res){
+				res.nowait();
+			}]
+		]);
+		return;
+	}
+	else if(node.type == 'branch'){
+		SearchNode(node.selections[0]);
+	}
+	else{
+		addNodeToList(node,name);
+		for(var i in node.selections){
+			SearchNode(node.selections[i],name);
+		}
+	}
+};
+
+var parseRoots = function(){
+	for (var name in roots){
+		root = roots[name];
+		SearchNode(root.entry[0],name);
+	};
+	console.log('wechat parse done');
+};
+
 exports.handler = wechat(wechatToken,wechat.text(function(info,req,res,next){
 	res.wait('listtest');
 }));
-
 
 exports.render = function(req, res) {
 	if (checkSignature(req)) {
 		res.send(200, req.query.echostr);
 	};
+};
+
+exports.setRoots = function(r){
+	roots = r;
+};
+
+exports.onLoaderUpdate = function() {
+	parseRoots();
 };

@@ -61,15 +61,15 @@ var onSave = function(data, socket) {
 	} else {
 		md5 = md5encrypt(root.name);
 	}
-	var xml = '<version>' + xmlversion + '</version>';
 	var xml = '<' + data.name + '>\n';
+	xml += '\t<version>' + xmlversion + '</version>\n';
 	for (var uid in data.nodes) {
 		xml += '\t<node>\n';
 		xml += '\t\t<id>' + data.nodes[uid].id + '</id>\n';
 		xml += '\t\t<type>' + data.nodes[uid].type + '</type>\n';
 		xml += '\t\t<lines>' + data.nodes[uid].lines + '</lines>\n';
-		xml += '\t\t<top>' + data.nodes[uid].top + '</top>';
-		xml += '\t\t<left>' + data.nodes[uid].left + '</left>';
+		xml += '\t\t<top>' + data.nodes[uid].top + '</top>\n';
+		xml += '\t\t<left>' + data.nodes[uid].left + '</left>\n';
 		xml += '\t</node>\n';
 	}
 	for (var uid in data.connections) {

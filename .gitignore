@@ -26,7 +26,7 @@ public/media/ost
 
 # for files saving directory
 tmp/
-drama_scripts/
+# drama_scripts/
 
 #for emacs' temp file
 *.*~

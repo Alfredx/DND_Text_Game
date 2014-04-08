@@ -8,6 +8,7 @@ var xmldirpath = 'drama_scripts/';
 var scriptsNode = utils.scriptsNode;
 var xmlversion = 0.1;
 var validFiles = 0;
+var registedUsers = [];
 var roots = {};
 var logger = new Logger({logName:'Script Loader',module:'scripts_loader.js'});
 
@@ -17,6 +18,9 @@ var readXML = function(dir) {
 		parser.parseString(data, function(err, result) {
 			if (err) {
 				logger.log('invalid XML file: ' + dir,'error');
+				logger.log(err,'error');
+				validFiles--;
+				return;
 			}
 			var root = {
 				entry: new Array(),
@@ -25,6 +29,7 @@ var readXML = function(dir) {
 			var nodes = {};
 			for (var name in result) {
 				root.name = name;
+				console.log('[ OK ] loading -> '+name);
 				if (result[name]['version'] <= xmlversion)
 					delete result[name]['version'];
 				else {
@@ -68,11 +73,19 @@ exports.onload = function(version) {
 		if (i == validFiles) {
 			clearInterval(id);
 			logger.log('All XML loaded. Total: '+i,'ok');			
-			console.log('[ OK ] All XML loaded. Total: '+i);			
+			console.log('[ OK ] All XML loaded. Total: '+i);
+			for(var i in registedUsers){
+				registedUsers[i].setRoots(roots);
+				registedUsers[i].onLoaderUpdate();
+			};
 		}
 	}, 1000);
 };
 
 exports.getRoots = function() {
 	return roots;
+};
+
+exports.registerUser = function(user){
+	registedUsers.push(user);
 };

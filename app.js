@@ -48,12 +48,15 @@ app.get('/forever', v2iHandler.render);
 var server = http.createServer(app);
 var io = sio.listen(server, {log: true});
 
+scriptsLoader.registerUser(wechat);
 scriptsLoader.onload(version);
 
 handler.newConnection(io,logger);
 handler.initIO(io);//only for web user
 scriptsHandler.setVersion(version);
 scriptsHandler.initIO(io);	//io.of('/scripts')
+
+
 
 server.listen(app.get('port'), function(){
 	console.log('Server linstening on port '+app.get('port'));
