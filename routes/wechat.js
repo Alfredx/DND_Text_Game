@@ -37,8 +37,7 @@ var addNodeToList = function(node, name){
 	var content = [];
 	content.push([node.lines,function(info,req,res){}]);
 	for(var i in node.selections){
-		char a = 'a';
-		content.push(['回复 {'+(a+i)+'} :'+node.selections[i].lines,function(info,req,res){
+		content.push(['回复 {'+i+'} :'+node.selections[i].lines,function(info,req,res){
 			res.wait(node.selections[i].selections[0].lines+name);
 		}]);
 		console.log('\t'+node.selections[i].selections[0].lines+name)
