@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"regi",
+				"registedUsers"
+			],
+			[
+				"scri",
+				"scriptsLoader"
+			],
+			[
 				"wecha",
 				"wechat"
 			],
@@ -506,14 +514,6 @@
 			[
 				"ids",
 				"idsinxml"
-			],
-			[
-				"id",
-				"id_start"
-			],
-			[
-				"print",
-				"PrintPath"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 1985,
+				"buffer_size": 2023,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +531,7 @@
 			"file": "routes/wechat.js",
 			"settings":
 			{
-				"buffer_size": 983,
+				"buffer_size": 2074,
 				"line_ending": "Windows"
 			}
 		},
@@ -544,6 +544,14 @@
 			}
 		},
 		{
+			"file": "routes/scripts_loader.js",
+			"settings":
+			{
+				"buffer_size": 2514,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "views/dev_scripts.ejs",
 			"settings":
 			{
@@ -552,29 +560,10 @@
 			}
 		},
 		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 275,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "routes/scripts_loader.js",
-			"settings":
-			{
-				"buffer_size": 2296,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<version>0.1</version>\n<wechattest>\n	<node>\n		<id>start-1</id>\n		<type>start</type>\n		<lines>start</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-1</id>\n		<type>branch</type>\n		<lines>start-1</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-2</id>\n		<type>branch</type>\n		<lines>start-2</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-3</id>\n		<type>branch</type>\n		<lines>start-3</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>node-1</id>\n		<type>node</type>\n		<lines>node-start-1</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>node-2</id>\n		<type>node</type>\n		<lines>node-start-2</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>node-3</id>\n		<type>node</type>\n		<lines>node-start-3</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-4</id>\n		<type>branch</type>\n		<lines>node-1-1</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-5</id>\n		<type>branch</type>\n		<lines>node-1-2</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-6</id>\n		<type>branch</type>\n		<lines>node-1-3</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-7</id>\n		<type>branch</type>\n		<lines>node-2-1</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-8</id>\n		<type>branch</type>\n		<lines>node-2-2</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-9</id>\n		<type>branch</type>\n		<lines>node-2-3</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-10</id>\n		<type>branch</type>\n		<lines>node-3-1</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-11</id>\n		<type>branch</type>\n		<lines>node-3-2</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-12</id>\n		<type>branch</type>\n		<lines>node-3-3</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>node-4</id>\n		<type>node</type>\n		<lines>新节点4</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>node-5</id>\n		<type>node</type>\n		<lines>新节点5</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>node-6</id>\n		<type>node</type>\n		<lines>新节点6</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>node-7</id>\n		<type>node</type>\n		<lines>新节点7</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-13</id>\n		<type>branch</type>\n		<lines>新分支13</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-14</id>\n		<type>branch</type>\n		<lines>新分支14</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-15</id>\n		<type>branch</type>\n		<lines>新分支15</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-16</id>\n		<type>branch</type>\n		<lines>新分支16</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-17</id>\n		<type>branch</type>\n		<lines>新分支17</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-18</id>\n		<type>branch</type>\n		<lines>新分支18</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>branch-19</id>\n		<type>branch</type>\n		<lines>新分支19</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>end-1</id>\n		<type>end</type>\n		<lines>新结束点1</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>end-2</id>\n		<type>end</type>\n		<lines>新结束点2</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>end-3</id>\n		<type>end</type>\n		<lines>新结束点3</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<node>\n		<id>end-4</id>\n		<type>end</type>\n		<lines>新结束点4</lines>\n		<top>undefined</top>\n		<left>undefined</left>\n	</node>\n	<connection>\n		<sourceId>start-1</sourceId>\n		<targetId>branch-1</targetId>\n	</connection>\n	<connection>\n		<sourceId>start-1</sourceId>\n		<targetId>branch-2</targetId>\n	</connection>\n	<connection>\n		<sourceId>start-1</sourceId>\n		<targetId>branch-3</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-1</sourceId>\n		<targetId>node-1</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-2</sourceId>\n		<targetId>node-2</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-3</sourceId>\n		<targetId>node-3</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-1</sourceId>\n		<targetId>branch-4</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-1</sourceId>\n		<targetId>branch-5</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-1</sourceId>\n		<targetId>branch-6</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-2</sourceId>\n		<targetId>branch-7</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-2</sourceId>\n		<targetId>branch-8</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-2</sourceId>\n		<targetId>branch-9</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-3</sourceId>\n		<targetId>branch-10</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-3</sourceId>\n		<targetId>branch-11</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-3</sourceId>\n		<targetId>branch-12</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-4</sourceId>\n		<targetId>node-4</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-5</sourceId>\n		<targetId>node-5</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-7</sourceId>\n		<targetId>node-6</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-8</sourceId>\n		<targetId>node-7</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-9</sourceId>\n		<targetId>node-4</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-10</sourceId>\n		<targetId>node-6</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-11</sourceId>\n		<targetId>node-7</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-12</sourceId>\n		<targetId>node-4</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-4</sourceId>\n		<targetId>branch-13</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-4</sourceId>\n		<targetId>branch-14</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-6</sourceId>\n		<targetId>node-6</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-5</sourceId>\n		<targetId>branch-15</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-6</sourceId>\n		<targetId>branch-17</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-6</sourceId>\n		<targetId>branch-18</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-7</sourceId>\n		<targetId>branch-16</targetId>\n	</connection>\n	<connection>\n		<sourceId>node-7</sourceId>\n		<targetId>branch-19</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-13</sourceId>\n		<targetId>end-1</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-14</sourceId>\n		<targetId>end-2</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-15</sourceId>\n		<targetId>end-1</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-17</sourceId>\n		<targetId>end-1</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-18</sourceId>\n		<targetId>end-3</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-16</sourceId>\n		<targetId>end-4</targetId>\n	</connection>\n	<connection>\n		<sourceId>branch-19</sourceId>\n		<targetId>end-4</targetId>\n	</connection>\n</wechattest>\n",
 			"file": "drama_scripts/55048523910cccab97c71c0bc3b64ea4",
-			"file_size": 7635,
-			"file_write_time": 130414370255997849,
 			"settings":
 			{
-				"buffer_size": 7560,
+				"buffer_size": 7561,
 				"line_ending": "Unix"
 			}
 		}
@@ -648,7 +637,10 @@
 	"file_history":
 	[
 		"/D/Git/DND_Text_Game/drama_scripts/55048523910cccab97c71c0bc3b64ea4",
+		"/D/Git/DND_Text_Game/logs/Tue-Apr-08-2014--Script Loader",
 		"/D/Git/DND_Text_Game/drama_scripts/b6625cda0b786db33057f12efd9e1820",
+		"/D/Git/DND_Text_Game/.gitignore",
+		"/D/Git/DND_Text_Game/logs/Tue-Apr-08-2014--NodeServer",
 		"/C/Users/Alfred/Desktop/time.html",
 		"/D/Git/DND_Text_Game/package.json",
 		"/D/Git/DND_Text_Game/routes/logger.js",
@@ -771,10 +763,7 @@
 		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/9/instance.xml",
 		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/546/notes.dat",
 		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/612/instance.xml",
-		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/546/instance.xml",
-		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/questConfig.dat",
-		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/chat.xml",
-		"/C/Users/Alfred/AppData/Local/Temp/Rar$DRa0.347/131.bin"
+		"/E/Program Files (x86)/WakfuChina/game/clientConfig/alfred0830/astrub/小考拉/546/instance.xml"
 	],
 	"find":
 	{
@@ -962,7 +951,7 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -970,15 +959,15 @@
 					"file": "app.js",
 					"settings":
 					{
-						"buffer_size": 1985,
+						"buffer_size": 2023,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1248,
-								1248
+								1664,
+								1664
 							]
 						],
 						"settings":
@@ -1090,7 +1079,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1100,15 +1089,15 @@
 					"file": "routes/wechat.js",
 					"settings":
 					{
-						"buffer_size": 983,
+						"buffer_size": 2074,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								680,
-								680
+								1398,
+								1398
 							]
 						],
 						"settings":
@@ -1221,7 +1210,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1238,8 +1227,8 @@
 						"selection":
 						[
 							[
-								1488,
-								1527
+								92,
+								98
 							]
 						],
 						"settings":
@@ -1352,13 +1341,144 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 585.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "routes/scripts_loader.js",
+					"settings":
+					{
+						"buffer_size": 2514,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								902,
+								902
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "views/dev_scripts.ejs",
 					"settings":
 					{
@@ -1489,280 +1609,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": ".gitignore",
-					"settings":
-					{
-						"buffer_size": 275,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								233,
-								233
-							]
-						],
-						"settings":
-						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 5,
-					"file": "routes/scripts_loader.js",
-					"settings":
-					{
-						"buffer_size": 2296,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								657,
-								657
-							]
-						],
-						"settings":
-						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
 					"file": "drama_scripts/55048523910cccab97c71c0bc3b64ea4",
 					"settings":
 					{
-						"buffer_size": 7560,
+						"buffer_size": 7561,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22,
-								22
+								94,
+								99
 							]
 						],
 						"settings":
