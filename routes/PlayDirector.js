@@ -146,6 +146,7 @@ var PlayManager = function(){
 
 	this.MakeDecision = function(uid,playerid,groupid,branchid){
 		this.underGoingPlays[uid].decisionGroup[groupid][branchid]++;
+		console.log(this.underGoingPlays[uid].decisionGroup);
 	}
 	this.QueryResult = function(uid,playerid,groupid){
 		console.log(this.underGoingPlays[uid].decisionGroup);
@@ -159,9 +160,9 @@ var PlayManager = function(){
 				branch = i;
 			}
 			if(!minbranch)
-				minbranch = group[i];
-			else if (group[i] < minbranch)
-				minbranch = group[i];
+				minbranch = i;
+			else if (i < minbranch)
+				minbranch = i;
 		}
 		if (max){
 			return '#'+groupid+'#'+branch+'#';
@@ -205,6 +206,7 @@ var PlayService = function(play,uid){
 	this.playuid = uid;
 	this.play = play;
 	this.currentNode = play.entry[0];
+	console.log(this.currentNode.lines);
 	this.getDecisionNumber = function(str){
 		if (str.length === 0)
 			return NaN;
@@ -236,11 +238,24 @@ var PlayService = function(play,uid){
 			//console.log(message,number,this.currentNode.selections);
 			ret = this.currentNode.selections[number].toString();
 			this.currentNode = this.currentNode.selections[number];
+			if(this.currentNode.type === 'decide'){	//this current is the next node
+				var secondsharp = this.currentNode.lines.indexOf('#',1);
+				var thirdsharp = this.currentNode.lines.indexOf('#',secondsharp+1);
+				var groupid = this.currentNode.lines.substring(1,secondsharp);
+				var branchid = this.currentNode.lines.substring(secondsharp+1,thirdsharp);
+				manager.MakeDecision(this.playuid,playerid,groupid,branchid);
+			}
+			if(this.currentNode.type === 'branch'
+				|| this.currentNode.type === 'decide'){
+				this.currentNode = this.currentNode.selections[0];
+				ret = this.currentNode.toString();
+			}
 			var groupid = '';
 			for (var i in this.currentNode.selections){
 				if (this.currentNode.selections[i].type === 'result'){
 					var lines = this.currentNode.selections[i].lines
 					groupid = lines.substring(1,lines.indexOf('#',1));
+					console.log(groupid);
 					break;
 				}
 			}
@@ -255,14 +270,7 @@ var PlayService = function(play,uid){
 					}
 				}
 			}
-			if(this.currentNode.type === 'decide'){	//this current is the next node
-				var secondsharp = this.currentNode.lines.indexOf('#',1);
-				var thirdsharp = this.currentNode.lines.indexOf('#',secondsharp+1);
-				var groupid = this.currentNode.lines.substring(1,secondsharp);
-				var branchid = this.currentNode.lines.substring(secondsharp+1,thirdsharp);
-				manager.MakeDecision(this.playuid,playerid,groupid,branchid);
-			}
-
+			
 			if (this.currentNode.type === 'end'){
 				res = 3;
 				ret = this.playuid;
@@ -346,7 +354,7 @@ var PlayDirector = function(){
 			// 3 for play ends
 			if (ret.result === 1){
 				binding.ApplyService(ret.content);
-				ret = binding.NewMessage(message,playerid);
+				ret = binding.NewMessage(NaN,playerid);
 			}
 			else if (ret.result === 3){
 				manager.ExitPlay(playerid,ret.content);

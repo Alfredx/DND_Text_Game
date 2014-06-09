@@ -10,6 +10,10 @@ var socket = null;
 
 var scriptsName = null;
 var scriptsTree = {};
+var changedTop = 0;
+var changedLeft = 0;
+var winWidth = screen.width;
+var winHeight = screen.height;
 
 var Node = function(){
 	this.lines = "";
@@ -61,7 +65,9 @@ var makeElement = function(jquery_element){
 	jsPlumb.draggable(jquery_element);
 	if(jquery_element[0].id.indexOf("end")<0){
 		var sourcetype = sourceType();
-		if(jquery_element[0].id.indexOf("branch") >= 0 || jquery_element[0].id.indexOf("decide") >= 0)
+		if(jquery_element[0].id.indexOf("branch") >= 0 
+			|| jquery_element[0].id.indexOf("decide") >= 0
+			|| jquery_element[0].id.indexOf("result") >=0)
 			sourcetype.maxConnections = 1;
 		jsPlumb.makeSource(jquery_element,sourcetype);
 	}
@@ -169,7 +175,6 @@ var onReady = function() {
 		delete connections[c.sourceId+c.targetId];
 	});
 	jsPlumb.bind("connection", function(info){
-		console.log(info);
 		var sts1 = info.connection.sourceId.indexOf("branch") >= 0 
 					|| info.connection.sourceId.indexOf("decide") >= 0
 					|| info.connection.sourceId.indexOf("result") >= 0;
@@ -203,7 +208,7 @@ var dropFunction = function(event, ui){
 		var id = savednode.id?savednode.id : "start-"+startID;
 		$("#plumbContainer").append('<div class="start w"'+
 					   'id="'+id+'" '+
-					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   'style="left: '+(ui.position.left-winWidth/10)+'px; top: '+ui.position.top+'px;"'+
 					   '>'+lines+'<div class="ep"></div></div>');
 		var ep_start = new Node();
 		ep_start.id = id;
@@ -220,7 +225,7 @@ var dropFunction = function(event, ui){
 		var id = savednode.id?savednode.id : "node-"+nodeID
 		$("#plumbContainer").append('<div class="node w"'+
 					   'id="'+id+'" '+
-					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   'style="left: '+(ui.position.left-winWidth/10)+'px; top: '+ui.position.top+'px;"'+
 					   '>'+lines+'<div class="ep"></div></div>');
 		var ep_node = new Node();
 		ep_node.id = id;
@@ -229,15 +234,14 @@ var dropFunction = function(event, ui){
 		nodes.addChild(ep_node);
 		makeElement($("#"+ep_node.id));
 		bindClickEvent($("#"+ep_node.id), ep_node);
-		if (!ui.savednode)
-			nodeID++;
+		nodeID++;
 		break;
 	case "branch_clone":
 		var lines = savednode.lines?savednode.lines : '新分支'+branchID;
 		var id = savednode.id?savednode.id : "branch-"+branchID
 		$("#plumbContainer").append('<div class="branch w"'+
 					   'id="'+id+'" '+
-					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   'style="left: '+(ui.position.left-winWidth/10)+'px; top: '+ui.position.top+'px;"'+
 					   '>'+lines+'<div class="ep"></div></div>');
 		var ep_branch = new Node();
 		ep_branch.id = id;
@@ -253,7 +257,7 @@ var dropFunction = function(event, ui){
 		var id = savednode.id ? savednode.id : "decide-"+decideID;
 		$("#plumbContainer").append('<div class="decide w"'+
 					   'id="'+id+'" '+
-					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   'style="left: '+(ui.position.left-winWidth/10)+'px; top: '+ui.position.top+'px;"'+
 					   '>'+lines+'<div class="ep"></div></div>');
 		var ep_decide = new Node();
 		ep_decide.id = id;
@@ -269,7 +273,7 @@ var dropFunction = function(event, ui){
 		var id = savednode.id ? savednode.id : "result-"+resultID;
 		$("#plumbContainer").append('<div class="result w"'+
 					   'id="'+id+'" '+
-					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   'style="left: '+(ui.position.left-winWidth/10)+'px; top: '+ui.position.top+'px;"'+
 					   '>'+lines+'<div class="ep"></div></div>');
 		var ep_result = new Node();
 		ep_result.id = id;
@@ -285,7 +289,7 @@ var dropFunction = function(event, ui){
 		var id = savednode.id?savednode.id : "end-"+endID
 		$("#plumbContainer").append('<div class="end w"'+
 					   'id="'+id+'" '+
-					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   'style="left: '+(ui.position.left-winWidth/10)+'px; top: '+ui.position.top+'px;"'+
 					   '>'+lines+'<div class="ep"></div></div>');
 		var ep_end = new Node();
 		ep_end.id = id;
@@ -301,6 +305,7 @@ var dropFunction = function(event, ui){
 
 var LoadPlay = function(data){
 	console.log('onLoadPlay');
+	console.log(data);
 	if(!data){
 		alert('没有找到该剧本');
 		return;
@@ -312,6 +317,9 @@ var LoadPlay = function(data){
 	endID = 1;
 	decideID = 1;
 	resultID = 1;
+
+	changedTop = 0;
+	changedLeft = 0;
 
 	scriptsName = data.name;
 	$("#name").html(scriptsName+'<a id="changeName">修改</a>');
@@ -362,8 +370,14 @@ var onSave = function(){
 		data.nodes[uid].id = nodes.children[uid].id;
 		data.nodes[uid].type = nodes.children[uid].type;
 		data.nodes[uid].lines = nodes.children[uid].lines;
+		if ($("#"+data.nodes[uid].id)[0].offsetTop > $("#plumbContainer").height()){
+			$("#plumbContainer").height($("#"+data.nodes[uid].id)[0].offsetTop+20);
+		}
 		data.nodes[uid].top = $("#"+data.nodes[uid].id)[0].offsetTop;
-		data.nodes[uid].left = $("#"+data.nodes[uid].id)[0].offsetLeft+screen.width/10;		
+		if ($("#"+data.nodes[uid].id)[0].offsetLeft > $("#plumbContainer").width()){
+			$("#plumbContainer").width($("#"+data.nodes[uid].id)[0].offsetLeft+20);
+		}
+		data.nodes[uid].left = $("#"+data.nodes[uid].id)[0].offsetLeft+winWidth/10;		
 	}
 	for(var uid in connections){
 		data.connections[uid] = {};

@@ -5,119 +5,119 @@
 		<type>start</type>
 		<lines>你现在看到的是一个学生在做他的毕业设计答辩，请问他的名字是什么？</lines>
 		<top>34</top>
-		<left>435</left>
+		<left>427.6</left>
 	</node>
 	<node>
 		<id>branch-1</id>
 		<type>branch</type>
 		<lines>沈超</lines>
 		<top>122</top>
-		<left>479</left>
+		<left>471.6</left>
 	</node>
 	<node>
 		<id>branch-2</id>
 		<type>branch</type>
 		<lines>王二</lines>
 		<top>123</top>
-		<left>616</left>
+		<left>608.6</left>
 	</node>
 	<node>
 		<id>branch-3</id>
 		<type>branch</type>
 		<lines>张三</lines>
 		<top>123</top>
-		<left>758</left>
+		<left>750.6</left>
 	</node>
 	<node>
 		<id>node-1</id>
 		<type>node</type>
 		<lines>不对不对，他的名字叫沈超，学号是102904</lines>
 		<top>192</top>
-		<left>631</left>
+		<left>623.6</left>
 	</node>
 	<node>
 		<id>branch-4</id>
 		<type>branch</type>
 		<lines>继续</lines>
 		<top>603</top>
-		<left>625</left>
+		<left>617.6</left>
 	</node>
 	<node>
 		<id>node-2</id>
 		<type>node</type>
 		<lines>没错，而且他的学号是102904</lines>
 		<top>190</top>
-		<left>396</left>
+		<left>388.6</left>
 	</node>
 	<node>
 		<id>branch-5</id>
 		<type>branch</type>
 		<lines>继续</lines>
 		<top>272</top>
-		<left>594</left>
+		<left>586.6</left>
 	</node>
 	<node>
 		<id>node-3</id>
 		<type>node</type>
 		<lines>那么作为一个公众平台上的应用，文字游戏是不是一个好选择呢？</lines>
 		<top>336</top>
-		<left>444</left>
+		<left>436.6</left>
 	</node>
 	<node>
 		<id>decide-1</id>
 		<type>decide</type>
 		<lines>#1#1#是</lines>
 		<top>418</top>
-		<left>493</left>
+		<left>485.6</left>
 	</node>
 	<node>
 		<id>decide-2</id>
 		<type>decide</type>
 		<lines>#1#2#不是</lines>
 		<top>416</top>
-		<left>662</left>
+		<left>654.6</left>
 	</node>
 	<node>
 		<id>node-4</id>
 		<type>node</type>
 		<lines>确实是一个好选择呢，平常在公交，地铁上发发数字就能玩游戏，也能随时想停就停。</lines>
-		<top>509</top>
-		<left>332</left>
+		<top>510</top>
+		<left>213.6</left>
 	</node>
 	<node>
 		<id>node-5</id>
 		<type>node</type>
 		<lines>确实，公众平台还可以提供更多的内容，单单文字略显单调。</lines>
-		<top>470</top>
-		<left>618</left>
+		<top>486</top>
+		<left>641.6</left>
 	</node>
 	<node>
 		<id>end-1</id>
 		<type>end</type>
 		<lines>演示就到此为止了</lines>
-		<top>932</top>
-		<left>594</left>
+		<top>1123</top>
+		<left>581.6</left>
 	</node>
 	<node>
 		<id>result-1</id>
 		<type>result</type>
 		<lines>#1#1#大多数老师选择了是</lines>
 		<top>770</top>
-		<left>436</left>
+		<left>428.6</left>
 	</node>
 	<node>
 		<id>result-2</id>
 		<type>result</type>
-		<lines>大多数老师选择了不是</lines>
+		<lines>#1#2#大多数老师选择了不是</lines>
 		<top>775</top>
-		<left>674</left>
+		<left>666.6</left>
 	</node>
 	<node>
 		<id>node-6</id>
 		<type>node</type>
 		<lines>那么下面就是选择的结果啦</lines>
 		<top>664</top>
-		<left>550</left>
+		<left>542.6</left>
 	</node>
 	<connection>
 		<sourceId>start-1</sourceId>
@@ -176,10 +176,6 @@
 		<targetId>branch-4</targetId>
 	</connection>
 	<connection>
-		<sourceId>branch-4</sourceId>
-		<targetId>node-6</targetId>
-	</connection>
-	<connection>
 		<sourceId>node-6</sourceId>
 		<targetId>result-1</targetId>
 	</connection>
@@ -194,5 +190,13 @@
 	<connection>
 		<sourceId>result-2</sourceId>
 		<targetId>end-1</targetId>
+	</connection>
+	<connection>
+		<sourceId>node-4</sourceId>
+		<targetId>branch-4</targetId>
+	</connection>
+	<connection>
+		<sourceId>branch-4</sourceId>
+		<targetId>node-6</targetId>
 	</connection>
 </演示>
