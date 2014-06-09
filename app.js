@@ -31,8 +31,8 @@ app.use('/public', express.static(path.join(__dirname, 'public'/*, {maxAge: 6048
 //use md5 check to clear cache? how?
 //wechat message
 app.use(express.query());
-app.use(express.cookieParser());
-app.use(express.session({secret:'everything can be a secret?', cookie:{maxAge:900000}}));
+//app.use(express.cookieParser());
+//app.use(express.session({secret:'everything can be a secret?', cookie:{maxAge:900000}}));
 app.use('/wechat',wechat.handler);
 
 // app.get('/', handler.index);

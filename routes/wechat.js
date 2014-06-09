@@ -77,14 +77,13 @@ var parseRoots = function(){
 	console.log('wechat parse done');
 };
 
-exports.handler = wechat(wechatToken,wechat.text(wechatToken, function(info,req,res,next){
+exports.handler = wechat(wechatToken, function(req,res,next){
 	var message = req.weixin;
-	console.log(message.content);
-	console.log(info.Content);
+	console.log(message);
 	var replyContent = director.PlayerMessage(message.FromUserName,message.content);
 	console.log(replyContent);
 	res.reply(replyContent);
-}));
+});
 
 exports.render = function(req, res) {
 	console.log('render here');
