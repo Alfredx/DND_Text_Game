@@ -321,9 +321,9 @@ var NewPlayService = function(roots){
 		}
 	};
 	this.ShowPlays = function(){
-		var str = '选择你的剧本：\n';
+		var str = '选择你的剧本：';
 		for (var i = 0; i < this.roots.length; i++){
-			str += '回复 '+i+' ：'+this.roots[i].name+'\n';
+			str += '\n'+'回复 '+i+' ：'+this.roots[i].name;
 		}
 		return str;
 	};
@@ -335,6 +335,7 @@ var PlayDirector = function(){
 	this.bindings = {};
 	this.LoadRoots = function(roots){
 		console.log('LoadRoots in PlayDirector');
+		this.roots = new Array();
 		for (var name in roots){
 			this.roots[roots[name].id] = roots[name];
 		}
