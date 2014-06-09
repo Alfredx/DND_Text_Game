@@ -335,7 +335,6 @@ var PlayDirector = function(){
 	this.bindings = {};
 	this.LoadRoots = function(roots){
 		console.log('LoadRoots in PlayDirector');
-		this.roots = new Array();
 		for (var name in roots){
 			this.roots[roots[name].id] = roots[name];
 		}

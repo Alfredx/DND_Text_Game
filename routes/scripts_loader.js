@@ -71,6 +71,7 @@ var readXML = function(dir) {
 
 exports.onload = function(version) {
 	roots = {};
+	currentId = 0;
 	xmlversion = version;
 	var files = fs.readdirSync(xmldirpath);
 	validFiles = files.length;
