@@ -1,6 +1,4 @@
-DND_Text_Game
+Wechat_Text_Game
 =============
 
-what is this? I don't know!
-Whaahhahahahahahahahahahahah
-This guy is out of his mind
+I was planned to make a DND text game, but somehow it comes to be a text game editor. whatever.
