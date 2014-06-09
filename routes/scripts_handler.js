@@ -6,7 +6,13 @@ var utils = require(__dirname + '/utils.js');
 
 var xmlversion = '0.1';
 var xmldirpath = 'drama_scripts/';
-var scriptsRoots = loader.getRoots();
+
+var scriptsRoots = null;
+var observer = new utils.ObserverObject();
+observer.name = 'ScriptsHandlerObserver';
+observer.update = function(roots){
+	scriptsRoots = roots;
+}
 
 var scriptsNode = utils.scriptsNode;
 
@@ -39,7 +45,6 @@ var isValid = function(data) {
 		}
 		return true;
 	};
-	//TODO
 	if (isEmpty(data.nodes) || isEmpty(data.connections) || !data.name)
 		return false;
 	else
@@ -85,6 +90,7 @@ var onSave = function(data, socket) {
 			throw err;
 		}
 		fs.readFile(xmldirpath + md5, function(err, data) {
+			loader.newPlay();
 			var parser = new xml2js.Parser();
 			parser.parseString(data, function(err, result) {
 				console.dir(result);
@@ -94,9 +100,50 @@ var onSave = function(data, socket) {
 	});
 };
 
+var SearchNode = function(node,node_container,connection_container){
+	if (node.type === 'end'){
+		List.add(node.lines+name,[
+			[node.lines+'\n--> ends <--',function(info,req,res){
+				res.nowait();
+			}]
+		]);
+		return;
+	}
+	else if(node.type === 'branch'){
+		SearchNode(node.selections[0],name);
+	}
+	else{
+		addNodeToList(node,name);
+		for(var i in node.selections){
+			SearchNode(node.selections[i],name);
+		}
+	}
+};
+
+var onLoad = function(data, socket) {
+	var play = scriptsRoots[data];
+	if (play){
+		var node = play.node;
+		var connection = play.connection;
+		var current = play.entry[0];
+
+		socket.emit('load',{
+			play: play,
+			name: play.name,
+			node: node,
+			connection: connection
+		});
+	}
+	else
+		socket.emit('load',null);
+};
+
 var initSocket = function(socket) {
 	socket.on("onsave", function(data) {
 		onSave(data, socket);
+	});
+	socket.on('onload', function(data) {
+		onLoad(data, socket);
 	});
 };
 
@@ -116,3 +163,5 @@ exports.render = function(req, res) {
 exports.setVersion = function(version) {
 	xmlversion = version;
 }
+
+exports.observer = observer;

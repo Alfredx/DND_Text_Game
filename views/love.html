@@ -1,0 +1,189 @@
+<!-- <!DOCTYPE html>
+<head>
+</head>
+<body>
+	<script type="text/javascript">
+		var today = new Date();
+		var firstday = new Date();
+		firstday.setFullYear(2013,5,15);
+		firstday.setHours(23);
+		firstday.setMinutes(32);
+		var millis = today - firstday;
+		var days = millis/1000.0/60.0/60.0/24.0;
+		document.write(days);
+	</script>
+</body> -->
+<!DOCTYPE HTML>
+<head>
+<meta charset="utf-8"/>
+<title>To my LOVE 孙尚珏</title>
+<style type="text/css">
+#canvas {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: block;
+	z-index: -1;
+}
+header{
+	text-align: center;
+}
+header #clock {
+	width:700px;
+	margin: 0 auto;
+}
+#textblock{
+	position: relative;
+	color: #ffffff;
+}
+#textblock p{
+	font-size: 20pt;
+}
+</style>
+<link href="../public/css/flipclock.css" rel="stylesheet">
+<script src="../public/js/lib/jquery-1.9.0-min.js"></script>
+<script src="../public/js/lib/flipclock.min.js"></script>
+</head>
+<body>
+<header>
+	<div id="clock" class="clock"></div>
+</header>
+<div id="textblock"></div>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+window.onload = function(){
+	var currentDate = new Date();
+	var firstday = new Date();
+	firstday.setFullYear(2013,5,15);
+	firstday.setHours(23);
+	firstday.setMinutes(39);
+	firstday.setSeconds(25);
+	var diff = currentDate.getTime() / 1000 - firstday.getTime() / 1000;
+	clock = $('.clock').FlipClock(diff, {
+		clockFace: 'DailyCounter'
+	});
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+	var W = window.innerWidth, H = window.innerHeight;
+	canvas.width = W;
+	canvas.height = H;
+	console.log(W,H);
+	ctx.globalCompositeOperation = "source-over";
+	ctx.fillStyle = "black";
+	ctx.fillRect(0, 0, W, H);
+	ctx.globalCompositeOperation = "lighter";
+	var particles = [];
+	var coord = {x:-10,y:-10};
+	for (var i = 100 - 1; i >= 0; i--) {
+		particles.push(new particle(coord.x,coord.y));
+	};
+	//Lets create some particles now
+	var particle_count = 100;
+	var t = 0;
+	var a = Math.min(W,H)/40;
+	var createHeartParticles = function(){
+		particles = [];
+		t = 0;
+		while(true){
+			t += 6.28/300;
+			if(t>6.28){
+				break;
+			}
+			x = Math.sin(t);
+			coord.x = (W-a)/2-a*16*(x*x*x);
+			coord.y = (H-a)/2-a*(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+			particles.push(new particle(coord.x,coord.y));
+		}
+	}
+
+	function particle(x,y)
+	{
+		this.speed = {x: -2.5+Math.random()*5, y: -15+Math.random()*10};
+		this.location = {x: x, y: y};
+		this.position = {x: x, y: y};
+		//radius range = 10-30
+		this.radius = 10+Math.random()*20;
+		//life range = 20-30
+		this.life = 20+Math.random()*10;
+		this.remaining_life = this.life;
+		//colors
+		this.r = Math.round(Math.random()*255);
+		this.g = Math.round(Math.random()*255);
+		this.b = Math.round(Math.random()*255);
+	}
+	
+	function draw()
+	{
+		ctx.globalCompositeOperation = "source-over";
+		ctx.fillStyle = "black";
+		ctx.fillRect(0, 0, W, H);
+		ctx.globalCompositeOperation = "lighter";
+		for(var i = 0; i < particles.length; i++)
+		{
+			var p = particles[i];
+			ctx.beginPath();
+			p.opacity = Math.round(p.remaining_life/p.life*100)/100
+			var gradient = ctx.createRadialGradient(p.location.x, p.location.y, 0, p.location.x, p.location.y, p.radius);
+			gradient.addColorStop(0, "rgba("+p.r+", "+p.g+", "+p.b+", "+p.opacity+")");
+			gradient.addColorStop(0.5, "rgba("+p.r+", "+p.g+", "+p.b+", "+p.opacity+")");
+			gradient.addColorStop(1, "rgba("+p.r+", "+p.g+", "+p.b+", 0)");
+			ctx.fillStyle = gradient;
+			ctx.arc(p.location.x, p.location.y, p.radius, Math.PI*2, false);
+			ctx.fill();
+			
+
+			p.remaining_life--;
+			p.radius--;
+			p.location.x += p.speed.x;
+			p.location.y += p.speed.y;
+
+			if(p.remaining_life < 0 || p.radius < 0)
+			{
+				if(t>6.28)
+					particles[i] = new particle(p.position.x,p.position.y);
+				else
+					particles[i] = new particle(coord.x,coord.y);
+			}
+		}
+	}
+	var showHeart = function(){
+		xid = setInterval(function(){
+			t += 6.28/196;
+			if(t>6.28){
+				createHeartParticles();
+				clearInterval(xid);
+			}
+			x = Math.sin(t);
+			coord.x = (W-a)/2-a*16*(x*x*x);
+			coord.y = (H-a)/2-a*(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+		},33);
+		setInterval(draw, 33);
+	}
+	var words = "";
+	var s = "这是自从你答应我以后直到现在的时间，从那天晚上开始，一直到现在。时间很长，但我还觉得不够长。你知道，有时候我会絮絮叨叨的，有的事情会从好几个方面来说，说到最后";
+	var content = "";
+	var p = 0;
+	var showWords = function(){
+		var nextWord = words.charAt(p++);
+		content += nextWord=="\n"?"</p><p>":nextWord;
+		$('#textblock').html("<p>"+content+"</p>");
+		if (nextWord != "") {
+			setTimeout(showWords,1);
+			console.log($('#textblock').html());
+		}
+		else{
+			showHeart();
+		}
+	}
+	showWords();
+}
+</script>
+
+<!-- /*
+本代码由素材库收集并编辑整理;
+尊重他人劳动成果;
+转载请保留素材库链接 - www.sucaiweb.com
+*/
+ -->
+</body>
+</html>

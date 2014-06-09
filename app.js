@@ -6,6 +6,7 @@ var handler = require(__dirname+'/routes/handler.js');
 var scriptsHandler = require(__dirname+'/routes/scripts_handler.js');
 var scriptsLoader = require(__dirname+'/routes/scripts_loader.js');
 var wechatVerify = require(__dirname+'/routes/wechat.js');
+var playdirector = require(__dirname+'/routes/PlayDirector.js');
 var http = require('http');
 var path = require('path');
 var sio = require('socket.io');
@@ -35,22 +36,26 @@ app.use(express.cookieParser());
 app.use(express.session({secret:'everything can be a secret?', cookie:{maxAge:900000}}));
 app.use('/wechat',wechat.handler);
 
-app.get('/', handler.index);
+// app.get('/', handler.index);
 app.get('/dev', handler.render);
 app.get('/dev/scripts', scriptsHandler.render);
 app.get('/wechat',wechatVerify.render);
 app.post('/msg',handler.msgHandle);
 
 
-var v2iHandler = require(__dirname+'/routes/voice_image_handler.js');
-app.get('/forever', v2iHandler.render);
+var loveHandler = require(__dirname+'/routes/love.js');
+app.get('/', loveHandler.render);
 
 var server = http.createServer(app);
-var io = sio.listen(server, {log: true});
+var io = sio.listen(server, {log: false});
 
+var director = playdirector.Director.getInstance();
 scriptsLoader.registerUser(wechat);
+scriptsLoader.registerUser(director);
+scriptsLoader.registerUser(scriptsHandler.observer);
 scriptsLoader.onload(version);
 
+handler.setDirector(director);
 handler.newConnection(io,logger);
 handler.initIO(io);//only for web user
 scriptsHandler.setVersion(version);

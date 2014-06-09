@@ -20,7 +20,10 @@ var onInputKeyPressed = function(event){
 	if(keynum == 13){
 		if(!input.value)
 			return;
-		socket.emit('msg',input.value);
+		socket.emit('msg',{
+			msg : input.value,
+			id : 'testid3'
+		});
 		sendAsUser(input.value);
 		input.value = '';
 	}

@@ -3,6 +3,8 @@ var startID = 1;
 var nodeID = 1;
 var branchID = 1;
 var endID = 1;
+var decideID = 1;
+var resultID = 1;
 
 var socket = null;
 
@@ -49,7 +51,7 @@ var sourceType = function() {
 						  outlineWidth:4 },
 		maxConnections: 99 ,
 		onMaxConnections: function(info, e) {
-			alert("Maximun connections (" + info.maxConnections + ") reached");
+			alert("已到达最大连接数(" + info.maxConnections + ")，无法添加更多连接");
 		}
 	};
 	return type;
@@ -59,7 +61,7 @@ var makeElement = function(jquery_element){
 	jsPlumb.draggable(jquery_element);
 	if(jquery_element[0].id.indexOf("end")<0){
 		var sourcetype = sourceType();
-		if(jquery_element[0].id.indexOf("branch") >= 0)
+		if(jquery_element[0].id.indexOf("branch") >= 0 || jquery_element[0].id.indexOf("decide") >= 0)
 			sourcetype.maxConnections = 1;
 		jsPlumb.makeSource(jquery_element,sourcetype);
 	}
@@ -95,6 +97,8 @@ var bindClickEvent = function(element, node){
 		}
 	});
 };
+
+
 
 var onReady = function() {
 	var resetRenderMode = function(desiredMode) {
@@ -135,68 +139,9 @@ var onReady = function() {
 	$(".module").draggable({
 		helper: "clone"
 	});
+	
 	$("#plumbContainer").droppable({
-		drop: function(event, ui){
-			switch(ui.draggable[0].id){
-			case "start_clone":
-				$(this).append('<div class="start w"'+
-							   'id="start-'+startID+'" '+
-							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
-							   '>新入口'+startID+'<div class="ep"></div></div>');
-				makeElement($("#start-"+startID));
-				var ep_start = new Node();
-				ep_start.id = "start-"+startID;
-				ep_start.type = "start";
-				ep_start.lines = "新入口"+startID;
-				scriptsTree["start-"+startID] = ep_start;
-				nodes.addChild(ep_start);
-				bindClickEvent($("#start-"+startID), ep_start);
-				startID++;
-				break;
-			case "node_clone":
-				$(this).append('<div class="node w"'+
-							   'id="node-'+nodeID+'" '+
-							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
-							   '>新节点'+nodeID+'<div class="ep"></div></div>');
-				makeElement($("#node-"+nodeID));
-				var ep_node = new Node();
-				ep_node.id = "node-"+nodeID;
-				ep_node.type = "node";
-				ep_node.lines = "新节点"+nodeID;
-				nodes.addChild(ep_node);
-				bindClickEvent($("#node-"+nodeID), ep_node);
-				nodeID++;
-				break;
-			case "branch_clone":
-				$(this).append('<div class="branch w"'+
-							   'id="branch-'+branchID+'" '+
-							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
-							   '>新分支'+branchID+'<div class="ep"></div></div>');
-				makeElement($("#branch-"+branchID));
-				var ep_branch = new Node();
-				ep_branch.id = "branch-"+branchID;
-				ep_branch.type = "branch";
-				ep_branch.lines = "新分支"+branchID;
-				nodes.addChild(ep_branch);
-				bindClickEvent($("#branch-"+branchID), ep_branch);
-				branchID++;
-				break;
-			case "end_clone":
-				$(this).append('<div class="end w"'+
-							   'id="end-'+endID+'" '+
-							   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
-							   '>新结束点'+endID+'<div class="ep"></div></div>');
-				makeElement($("#end-"+endID));
-				var ep_end = new Node();
-				ep_end.id = "end-"+endID;
-				ep_end.type = "end";
-				ep_end.lines = "新结束点"+endID;
-				nodes.addChild(ep_end);
-				bindClickEvent($("#end-"+endID), ep_end);
-				endID++;
-				break;
-			}
-		}
+		drop: dropFunction
 	});
 	$("#sidebar").droppable({
 		drop: function(event, ui){
@@ -224,8 +169,13 @@ var onReady = function() {
 		delete connections[c.sourceId+c.targetId];
 	});
 	jsPlumb.bind("connection", function(info){
-		var sts1 = info.connection.sourceId.indexOf("branch") >= 0;
-		var sts2 = info.connection.targetId.indexOf("branch") >= 0;
+		console.log(info);
+		var sts1 = info.connection.sourceId.indexOf("branch") >= 0 
+					|| info.connection.sourceId.indexOf("decide") >= 0
+					|| info.connection.sourceId.indexOf("result") >= 0;
+		var sts2 = info.connection.targetId.indexOf("branch") >= 0 
+					|| info.connection.targetId.indexOf("decide") >= 0
+					|| info.connection.targetId.indexOf("result") >= 0;
 		var statement = (sts1 || sts2) && !(sts1 && sts2);
 		if(statement){
 			info.connection.getOverlay("label").setLabel("");
@@ -242,6 +192,158 @@ var onReady = function() {
 
 };
 
+var dropFunction = function(event, ui){
+	var savednode = ui.savednode?ui.savednode : {
+		lines : "",
+		id : ""
+	};
+	switch(ui.draggable[0].id){
+	case "start_clone":
+		var lines = savednode.lines?savednode.lines : '新入口'+startID;
+		var id = savednode.id?savednode.id : "start-"+startID;
+		$("#plumbContainer").append('<div class="start w"'+
+					   'id="'+id+'" '+
+					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   '>'+lines+'<div class="ep"></div></div>');
+		var ep_start = new Node();
+		ep_start.id = id;
+		ep_start.type = "start";
+		ep_start.lines = lines;
+		scriptsTree[ep_start.id] = ep_start;
+		nodes.addChild(ep_start);
+		makeElement($("#"+ep_start.id));
+		bindClickEvent($("#"+ep_start.id), ep_start);
+		startID++;
+		break;
+	case "node_clone":
+		var lines = savednode.lines?savednode.lines : '新节点'+nodeID;
+		var id = savednode.id?savednode.id : "node-"+nodeID
+		$("#plumbContainer").append('<div class="node w"'+
+					   'id="'+id+'" '+
+					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   '>'+lines+'<div class="ep"></div></div>');
+		var ep_node = new Node();
+		ep_node.id = id;
+		ep_node.type = "node";
+		ep_node.lines = lines;
+		nodes.addChild(ep_node);
+		makeElement($("#"+ep_node.id));
+		bindClickEvent($("#"+ep_node.id), ep_node);
+		if (!ui.savednode)
+			nodeID++;
+		break;
+	case "branch_clone":
+		var lines = savednode.lines?savednode.lines : '新分支'+branchID;
+		var id = savednode.id?savednode.id : "branch-"+branchID
+		$("#plumbContainer").append('<div class="branch w"'+
+					   'id="'+id+'" '+
+					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   '>'+lines+'<div class="ep"></div></div>');
+		var ep_branch = new Node();
+		ep_branch.id = id;
+		ep_branch.type = "branch";
+		ep_branch.lines = lines;
+		nodes.addChild(ep_branch);
+		makeElement($("#"+ep_branch.id));
+		bindClickEvent($("#"+ep_branch.id), ep_branch);
+		branchID++;
+		break;
+	case "decide_clone":
+		var lines = savednode.lines ? savednode.lines : '新决策点'+decideID;
+		var id = savednode.id ? savednode.id : "decide-"+decideID;
+		$("#plumbContainer").append('<div class="decide w"'+
+					   'id="'+id+'" '+
+					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   '>'+lines+'<div class="ep"></div></div>');
+		var ep_decide = new Node();
+		ep_decide.id = id;
+		ep_decide.type = "decide";
+		ep_decide.lines = lines;
+		nodes.addChild(ep_decide);
+		makeElement($("#"+ep_decide.id));
+		bindClickEvent($("#"+ep_decide.id),ep_decide);
+		decideID++;
+		break;
+	case "result_clone":
+		var lines = savednode.lines ? savednode.lines : '新决策结果点'+resultID;
+		var id = savednode.id ? savednode.id : "result-"+resultID;
+		$("#plumbContainer").append('<div class="result w"'+
+					   'id="'+id+'" '+
+					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   '>'+lines+'<div class="ep"></div></div>');
+		var ep_result = new Node();
+		ep_result.id = id;
+		ep_result.type = "result";
+		ep_result.lines = lines;
+		nodes.addChild(ep_result);
+		makeElement($("#"+ep_result.id));
+		bindClickEvent($("#"+ep_result.id),ep_result);
+		resultID++;
+		break;
+	case "end_clone":
+		var lines = savednode.lines?savednode.lines : '新结束点'+endID;
+		var id = savednode.id?savednode.id : "end-"+endID
+		$("#plumbContainer").append('<div class="end w"'+
+					   'id="'+id+'" '+
+					   'style="left: '+(ui.position.left-screen.width/10)+'px; top: '+ui.position.top+'px;"'+
+					   '>'+lines+'<div class="ep"></div></div>');
+		var ep_end = new Node();
+		ep_end.id = id;
+		ep_end.type = "end";
+		ep_end.lines = lines;
+		nodes.addChild(ep_end);
+		makeElement($("#"+ep_end.id));
+		bindClickEvent($("#"+ep_end.id), ep_end);
+		endID++;
+		break;
+	}
+}
+
+var LoadPlay = function(data){
+	console.log('onLoadPlay');
+	if(!data){
+		alert('没有找到该剧本');
+		return;
+	}
+	$("#plumbContainer").html("");
+	startID = 1;
+	nodeID = 1;
+	branchID = 1;
+	endID = 1;
+	decideID = 1;
+	resultID = 1;
+
+	scriptsName = data.name;
+	$("#name").html(scriptsName+'<a id="changeName">修改</a>');
+	$("#changeName").click(onChangeName);
+	scriptsTree = {};
+	
+	for (var uid in data.node){
+		var ui = {
+			draggable : [{id: data.node[uid].type[0]+"_clone"}],
+			position : { 
+				left : data.node[uid].left[0], 
+				top : data.node[uid].top[0]
+			},
+			savednode : {
+				lines : data.node[uid].lines[0],
+				id : data.node[uid].id[0],
+				type : data.node[uid].type[0]
+			}
+		}
+		dropFunction(null,ui);
+	};
+	for (var uid in data.connection){
+		jsPlumb.connect({
+			source : data.connection[uid].sourceId[0],
+			target : data.connection[uid].targetId[0]
+		});
+	};
+};
+
+var onLoad = function(){
+	socket.emit('onload',$('#loadInput')[0].value);
+}
 var onSave = function(){
 	if(scriptsName === null){
 		//alert("请给你的剧本一个名字");
@@ -260,8 +362,8 @@ var onSave = function(){
 		data.nodes[uid].id = nodes.children[uid].id;
 		data.nodes[uid].type = nodes.children[uid].type;
 		data.nodes[uid].lines = nodes.children[uid].lines;
-		data.nodes[uid].top = $("#"+data.nodes[uid].id)[0].top;
-		data.nodes[uid].left = $("#"+data.nodes[uid].id)[0].left;		
+		data.nodes[uid].top = $("#"+data.nodes[uid].id)[0].offsetTop;
+		data.nodes[uid].left = $("#"+data.nodes[uid].id)[0].offsetLeft+screen.width/10;		
 	}
 	for(var uid in connections){
 		data.connections[uid] = {};
@@ -329,9 +431,14 @@ var onChangeName = function(){
 		alert(err);
 	})
 
+	socket.on('load',function(data){
+		LoadPlay(data);
+	});
+
 	jsPlumb.ready(onReady);
 	var time = (new Date()).toLocaleTimeString();
 	$("#time").html("创建于："+time);
 	$("#changeName").click(onChangeName);
 	$("#save").click(onSave);
+	$("#load").click(onLoad);
 })();

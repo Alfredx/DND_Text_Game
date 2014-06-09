@@ -129,6 +129,14 @@ body {
 	background-color: rgb(240,240,0);
 	max-width: 16%;
 }
+.decide{
+	background-color: #EE2C2C; 
+	max-width: 16%;
+}
+.result{
+	background-color: #CD96CD;
+	max-width: 16%;
+}
 .end{
 	background-color: rgb(30,200,200);
 	max-width: 80%;

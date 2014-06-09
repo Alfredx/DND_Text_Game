@@ -4,6 +4,7 @@ var loader = require(__dirname + '/scripts_loader.js');
 
 
 var scriptsRoots = loader.getRoots();
+var director = null;
 
 //used in dev
 var initSocket = function(socket){
@@ -24,7 +25,7 @@ var initSocket = function(socket){
 		console.log('[user]: '+data);
 		socket.emit('msg', {
 			pre : 'echo msg: ',
-			msg : data, 
+			msg : director.PlayerMessage(data.id,data.msg), 
 		});
 	});
 
@@ -32,6 +33,10 @@ var initSocket = function(socket){
 		
 	});
 };
+
+exports.setDirector = function(d){
+	director = d;
+}
 
 exports.index = function(req, res) {
 	var context = {

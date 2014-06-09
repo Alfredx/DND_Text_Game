@@ -1,9 +1,9 @@
 var fs = require('fs');
 var anonymousSeq = 0;
 var refresherID = null;
-var logs = new Array();
+var logs = {};
 
-Logger = function (params) {
+var Logger = function (params) {
 	this.logName = (new Date()).toDateString().replace(/[ ]/g,'-').toString() + '--' + (params.logName || ('Anonymous Log-' + anonymousSeq++));
 	this.module = params.module || 'None';
 	var _this = this;
@@ -47,10 +47,16 @@ Logger = function (params) {
 		this.log(initText);
 	}
 	this.log('---------------------------------------');
-	logs.push(this);
+	//logs.push(this);
 }
 
-exports.Logger = Logger;
+LoggerSingleton = function(params){
+	if (!logs[params.logName]){
+		logs[params.logName] = new Logger(params);
+	}
+	return logs[params.logName];
+}
+exports.Logger = LoggerSingleton;
 
 exports.logDailyRefresher = function(){
 	var refresher = function(){
@@ -60,11 +66,12 @@ exports.logDailyRefresher = function(){
 				for(var i = 0; i < logs.length; i++){
 					var name = logs[i].logName.substr(logs[i].logName.indexOf('--'));
 					var module = logs[i].module;
-					logs[i] = new Logger({logName:name,module:module});
+					logs[i] = new LoggerSingleton({logName:name,module:module});
 				} 
 			}
 		},3600000);
 		return id;
 	};
 	refresherID = refresher();
+	
 };

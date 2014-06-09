@@ -10,7 +10,14 @@ var xmlversion = 0.1;
 var validFiles = 0;
 var registedUsers = [];
 var roots = {};
+var currentId = 0;
 var logger = new Logger({logName:'Script Loader',module:'scripts_loader.js'});
+
+var notify = function(){
+	for(var i in registedUsers){
+		registedUsers[i].update(roots);
+	};
+};
 
 var readXML = function(dir) {
 	fs.readFile(dir, function(err, data) {
@@ -24,11 +31,15 @@ var readXML = function(dir) {
 			}
 			var root = {
 				entry: new Array(),
-				name: null
+				name: null,
+				id: null,
+				node: null,
+				connection: null
 			};
 			var nodes = {};
 			for (var name in result) {
 				root.name = name;
+				root.id = currentId++;
 				console.log('[ OK ] loading -> '+name);
 				if (result[name]['version'] <= xmlversion)
 					delete result[name]['version'];
@@ -50,6 +61,8 @@ var readXML = function(dir) {
 					var t = o_connection[uid].targetId[0].split('-');
 					nodes[s.join('-')].selections.push(nodes[t.join('-')]);
 				}
+				root.node = o_node;
+				root.connection = o_connection;
 			}
 			roots[root.name] = root;
 		});
@@ -74,10 +87,7 @@ exports.onload = function(version) {
 			clearInterval(id);
 			logger.log('All XML loaded. Total: '+i,'ok');			
 			console.log('[ OK ] All XML loaded. Total: '+i);
-			for(var i in registedUsers){
-				registedUsers[i].setRoots(roots);
-				registedUsers[i].onLoaderUpdate();
-			};
+			notify();
 		}
 	}, 1000);
 };
@@ -86,6 +96,23 @@ exports.getRoots = function() {
 	return roots;
 };
 
+exports.newPlay = function() {
+	exports.onload(xmlversion);
+}
+
 exports.registerUser = function(user){
-	registedUsers.push(user);
+	if (typeof user.update === 'function') {
+		registedUsers.push(user);
+		return true;
+	}
+	logger.log('no update method in '+user.getName());
+	return false;
+};
+
+exports.unregisterUser = function(user){
+	for (var ruser in registedUsers){
+		if (ruser == user){
+			delete ruser;
+		}
+	}
 };

@@ -1,4 +1,5 @@
 var wechat = require('wechat');
+var director = require(__dirname+'/PlayDirector.js').Director.getInstance();
 var List = wechat.List;
 var crypto = require('crypto');
 var wechatToken = 'alfredwechattoken';
@@ -40,14 +41,16 @@ var addNodeToList = function(node, name){
 		content.push(['回复 {'+i+'} :'+node.selections[i].lines,function(info,req,res){
 			res.wait(node.selections[i].selections[0].lines+name);
 		}]);
-		console.log('\t'+node.selections[i].selections[0].lines+name)
+		//console.log('\t'+node.selections[i].selections[0].lines+name)
 	}
-	console.log(content);
+	//console.log(content);
 	List.add(node.lines+name,content);
 };
 
 var SearchNode = function(node,name){
-	if (node.type == 'end'){
+	if (!node)
+		return;
+	if (node.type === 'end'){
 		List.add(node.lines+name,[
 			[node.lines+'\n--> ends <--',function(info,req,res){
 				res.nowait();
@@ -55,7 +58,7 @@ var SearchNode = function(node,name){
 		]);
 		return;
 	}
-	else if(node.type == 'branch'){
+	else if(node.type === 'branch'){
 		SearchNode(node.selections[0],name);
 	}
 	else{
@@ -74,8 +77,13 @@ var parseRoots = function(){
 	console.log('wechat parse done');
 };
 
-exports.handler = wechat(wechatToken,wechat.text(function(info,req,res,next){
-	res.wait('startwechattest');
+exports.handler = wechat(wechatToken,wechat(wechatToken, function(req,res,next){
+	var message = req.weixin;
+	var replyContent = director.PlayerMessage(message.FromUserName,message.content);
+	res.reply({
+		content: replyContent,
+		type: 'text'
+	});
 }));
 
 exports.render = function(req, res) {
@@ -84,10 +92,7 @@ exports.render = function(req, res) {
 	};
 };
 
-exports.setRoots = function(r){
+exports.update = function(r){
 	roots = r;
-};
-
-exports.onLoaderUpdate = function() {
-	parseRoots();
+	//parseRoots();
 };
