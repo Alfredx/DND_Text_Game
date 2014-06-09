@@ -79,9 +79,7 @@ var parseRoots = function(){
 
 exports.handler = wechat(wechatToken, function(req,res,next){
 	var message = req.weixin;
-	console.log(message);
-	var replyContent = director.PlayerMessage(message.FromUserName,message.content);
-	console.log(replyContent);
+	var replyContent = director.PlayerMessage(message.FromUserName,message.Content);
 	res.reply(replyContent);
 });
 
