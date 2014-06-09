@@ -17,12 +17,12 @@ exports.scriptsNode = function(lines, type, top, left){
 	}
 	this.toString = function(){
 		
-		var str = this.nosharp(this.lines)+'\n';
+		var str = this.nosharp(this.lines);
 		if (!this.selections.length)
 			str += '-->结束<--';
 		else{
 			for (var i = 0; i < this.selections.length; i++) {
-				str += '回复 '+i+' : '+this.nosharp(this.selections[i].lines)+'\n';
+				str += '\n'+'回复 '+i+' : '+this.nosharp(this.selections[i].lines);
 			};
 		}
 		return str;
