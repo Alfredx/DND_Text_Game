@@ -5,7 +5,6 @@ var wechat = require(__dirname+'/routes/wechat.js');
 var handler = require(__dirname+'/routes/handler.js');
 var scriptsHandler = require(__dirname+'/routes/scripts_handler.js');
 var scriptsLoader = require(__dirname+'/routes/scripts_loader.js');
-var wechatVerify = require(__dirname+'/routes/wechat.js');
 var playdirector = require(__dirname+'/routes/PlayDirector.js');
 var http = require('http');
 var path = require('path');
@@ -39,7 +38,7 @@ app.use('/wechat',wechat.handler);
 // app.get('/', handler.index);
 app.get('/dev', handler.render);
 app.get('/dev/scripts', scriptsHandler.render);
-app.get('/wechat',wechatVerify.render);
+app.get('/wechat',wechat.render);
 app.post('/msg',handler.msgHandle);
 
 

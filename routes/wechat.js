@@ -81,10 +81,7 @@ exports.handler = wechat(wechatToken,wechat(wechatToken, function(req,res,next){
 	var message = req.weixin;
 	var replyContent = director.PlayerMessage(message.FromUserName,message.content);
 	console.log(replyContent);
-	res.reply({
-		content: replyContent,
-		type: 'text'
-	});
+	res.reply(replyContent);
 }));
 
 exports.render = function(req, res) {
