@@ -88,6 +88,7 @@ exports.handler = wechat(wechatToken,wechat(wechatToken, function(req,res,next){
 }));
 
 exports.render = function(req, res) {
+	console.log('render here');
 	if (checkSignature(req)) {
 		res.send(200, req.query.echostr);
 	};
